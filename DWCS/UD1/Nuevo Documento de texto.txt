@@ -1,0 +1,4 @@
+Go
+Creado por google Go es un lenguaje con tipado fuerte y sintaxis moderna se ha vuelto muy usado por grandes empresas
+ya que ofrece una mejor performance que los lenguajes mencionados anteriormente, debido a que hay pocos programadores
+especializados en go sus salarios suelen ser considerablemente altos

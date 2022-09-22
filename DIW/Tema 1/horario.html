@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horario</title>
+    <style>
+        body{
+            font-family: Arial;
+        }
+        th,td{
+            border: black 1px solid;
+            text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        th{
+            background-color: lavender;
+        }
+        td{
+            height: 50px;
+            width: 125px;
+        }
+        .dias th{
+            background-color: dodgerblue;
+            color: white;
+            text-align: center;
+        }
+        .recreo  th,.recreo td{
+            color: white;
+            background-color: red;
+            font-size: 12px;
+            height: auto;
+        }
+        .descanso th,.descanso td{
+            color: white;
+            background-color: darkgrey;
+            font-size: 12px;
+            height: 16px;
+        }
+        .cabecera td{
+            height: auto;
+            padding: 0px;
+            border: none;
+        }
+        .espaciado td{
+            border: none;
+            height: 15px;
+        }
+        .cabecera td.rojo{
+            color: red;
+            font-weight: bold;
+            border-bottom: 2px red solid;
+        }
+        .cabecera td.azul{
+            color: dodgerblue;
+            font-weight: bold;
+            border-bottom: 1px dodgerblue solid;
+        }
+    </style>
+</head>
+<body>
+    <table style="border-collapse: collapse;">
+        <tr class="cabecera">
+            <td class="rojo">GRUPO</td>
+            <td class="azul"></td>
+            <td class="azul">CS DAW Dual 2º</td>
+            <td class="azul"></td>
+            <td class="rojo">Familia profesional</td>
+            <td class="azul">INFORMÁTICA</td>
+        </tr>
+        <tr class="espaciado">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="dias">
+            <th scope="col"></th>
+            <th scope="col">Luns</th>
+            <th scope="col">Martes</th>
+            <th scope="col">Mércores</th>
+            <th scope="col">Xoves</th>
+            <th scope="col">Venres</th>
+        </tr>
+        <tr>
+            <th scope="row">8:30-9:30</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">9:30-10:30</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">10:30-11:30</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="recreo">
+            <th scope="row">11:30-12:00<br>(RECREO)</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">12:00-13:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">13:00-14:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">14:00-15:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="descanso">
+            <th scope="row">15:00-16:00</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">16:00-17:00</th>
+            <td><strong>DWCC</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DWCC</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td></td>
+            <td><strong>DWCS</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DWCS</strong><br/>Aula 32<br/>2º DAW Dual</td>
+        </tr>
+        <tr>
+            <th scope="row">17:00-18:00</th>
+            <td><strong>DWCC</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DWCC</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DAW</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DWCS</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DWCS</strong><br/>Aula 32<br/>2º DAW Dual</td>
+        </tr>
+        <tr>
+            <th scope="row">18:00-19:00</th>
+            <td><strong>DWCC</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DWCC</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DAW</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DWCS</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DWCS</strong><br/>Aula 32<br/>2º DAW Dual</td>
+        </tr>
+        <tr class="recreo">
+            <th scope="row">19:00-19:20<br>(RECREO)</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">19:20-20:20</th>
+            <td><strong>DIW</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DIW</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>EIE</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DIW</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DAW</strong><br/>Aula 32<br/>2º DAW Dual</td>
+        </tr>
+        <tr>
+            <th scope="row">20:20-21:20</th>
+            <td><strong>DIW</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DIW</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td></td>
+            <td><strong>DIW</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DAW</strong><br/>Aula 32<br/>2º DAW Dual</td>
+        </tr>
+        <tr>
+            <th scope="row">21:20-22:20</th>
+            <td><strong>EIE</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td><strong>DIW</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td></td>
+            <td><strong>DIW</strong><br/>Aula 32<br/>2º DAW Dual</td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>
