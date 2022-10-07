@@ -295,7 +295,7 @@ sum=1;
 cont=2;
 if(x==0){
     pertenece=true;
-    mensaje+="El numero "+x+" SI pertenece a la sucesión de Fibonacci y esta en la posición "+ cont;
+    mensaje+="El numero "+x+" SI pertenece a la sucesión de Fibonacci y esta en la posición "+ --cont;
     mensaje+="\nEl número "+x+" es el primero en la sucesión de Fibonacci y por tanto, no tiene nigún número antrerior";
     mensaje+="\nEl número posterior al "+x+" en la sucesión de Fibonacci es el "+sum+"\n";
 }
@@ -314,42 +314,3 @@ do{
 if(!pertenece) mensaje+="El numero "+x+" NO pertenece a la sucesión de Fibonacci";
 alert(mensaje);
 */
-
-//Múltiplo de 3 de primaria
-mensaje="Múltiplo de 3 de primaria:\nEl número ";
-alert("Introduce un número y te diré si es divisible por 3");
-x="";
-cont=1;
-sum=0;
-do{
-    x=prompt("Pon el "+cont+"º dígito"+((cont==1)? ".":" o introduce * para finalizar el programa"));
-    if(x.trim()==""){
-        alert("No ha introducido nungún número.");
-    }
-    else if(cont==1 && x==0){
-        alert("El primer dígito de un número nunca puede ser 0");
-    }
-    else if(cont==1 && x=="*"){
-        alert("No puede finalizar el programa sin introducir ningun dígito.");
-        x="";
-    }
-    else if(x==parseInt(x) && x>=0 && x<=9){
-        sum+=x;
-        mensaje+=x;
-        cont++;
-    }
-    else if(x==null){
-        alert("No se puede cancelar el ejercicio.");
-    }
-    else if(x=="*"){
-        alert("Ha finalizado el programa.");
-    }
-    else if(x!=parseInt(x)){
-        alert("Solo puede introducir números o * para finalizar.");
-    }
-    else if(x>9){
-        alert("Solo puede introducir 1 numero para cada dígito.");
-    }
-}while(x!="*");
-mensaje+= ((sum%3==0) ? " ":" no" )+ " es divisible por 3";
-alert(mensaje);
