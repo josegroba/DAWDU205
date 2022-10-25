@@ -27,7 +27,7 @@
             $this->letra= $this->calcularLetra($num);
         }
         public function mostrar(){
-            return $this->numero."-".$this->letra;
+            return $this->numero.$this->letra;
         }
         public function leer(){
             $num=readline("Introduce un numero de dni:");

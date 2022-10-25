@@ -40,7 +40,7 @@ alert(mensaje);
 3.	Crea 3 arrays paralelos: nombre de profesor, nombre del módulo que imparte y 
     número de alumnos que tiene matriculados. 
     Hay que tener en cuenta que un profesor puede impartir más de un módulo y por
-     tanto aparecer varias veces en el primer array.
+    tanto aparecer varias veces en el primer array.
     Rellenar los arrays con los datos para 10 profesores, pero debe servir para 
     cualquier otro caso.
     Manejando los arrays anteriores hacer un programa que conteste a las siguientes 
@@ -52,7 +52,190 @@ alert(mensaje);
     •	¿Cuántos alumnos de media por módulo tiene un profesor?
     •	¿Cuál es el profesor que tiene el módulo con mayor número de alumnos matriculados
         y cuál es el módulo en el que se da esta circunstancia?
-*/
+*//*
 var profesores=["Juan","Martin","Beatriz","Juan","Alba","Francisco","Francisco","Juan","Alberto","MartaSkate"];
 var modulos=["ASJ","GHA","IHD","AHAIG","FOL","PES","VUA","HAK","DSHU","ASDF"];
-var alumnos=[10,20,15,30,24,19,18,26,14,8]; 
+var alumnos=[10,20,15,30,24,19,18,26,14,8];
+var mensaje="";
+var x=prompt("Introduce el nombre de uno de los profesores:");
+var cont=0;
+var encontrado=false;
+while(!encontrado&&cont<profesores.length){
+    if(profesores[cont].toLowerCase()==x.toLowerCase()){
+        encontrado=true;
+    }
+    cont++;
+}
+if(encontrado){
+    mensaje+=x+" si es profesor de algún módulo.\n";
+    cont=0;
+    let m=[];
+    let totalumnos=0;
+    for(let i=0;i<profesores.length;i++){
+        if(profesores[i].toLowerCase()==x.toLowerCase()){
+            cont++;
+            m.push(modulos[i]);
+            totalumnos+=alumnos[i];
+        }
+    }
+    mensaje+="El profesor "+x+" imparte "+cont+(cont>1? " módulos.\nLos módulos que imparte son: ":" módulo.\nEl módulo que imparte es: ");
+    for(let i=0;i<m.length;i++){
+        mensaje+=m[i]+" ";
+    }
+    mensaje+="\nEl profesor "+x+" tiene en total "+totalumnos+" alumnos\n";
+}else{
+    mensaje+=x+" no es profesor de ningún módulo.\n";
+}
+var media=0;
+for(let i=0;i<alumnos.length;i++){
+    media+=alumnos[i];
+}
+media/=alumnos.length;
+mensaje+="De media, un profesor tiene "+media+" alumnos por módulo.\n";
+var mayor=0;
+var profesor="";
+var modulo="";
+for(let i=0;i<alumnos.length;i++){
+    if(alumnos[i]>mayor){
+        mayor=alumnos[i];
+        profesor=profesores[i];
+        modulo=modulos[i];
+    }
+}
+mensaje+="El profesor con el módulo con mas alumnos es: "+profesor+" con "+mayor+" alumnos en el módulo "+modulo;
+alert(mensaje);
+*/
+/*
+4.	Haz lo mismo que en el ejercicio 3 pero esta vez creando 1 array denso.
+*//*
+var clase=new Array(["Juan","ASJ",10],
+                    ["Martin","GHA",20],
+                    ["Beatriz","IHD",15],
+                    ["Juan","AHAIG",30],
+                    ["Alba","FOL",24],
+                    ["Francisco","PES",19],
+                    ["Francisco","VUA",18],
+                    ["Juan","HAK",26],
+                    ["Alberto","DSHU",14],
+                    ["MartaSkate","ASDF",8]);
+var mensaje="";
+var x=prompt("Introduce el nombre de uno de los profesores:");
+var cont=0;
+var encontrado=false;
+while(!encontrado&&cont<clase.length){
+    if(clase[cont][0].toLowerCase()==x.toLowerCase()){
+        encontrado=true;
+    }
+    cont++;
+}
+if(encontrado){
+    mensaje+=x+" si es profesor de algún módulo.\n";
+    cont=0;
+    let m=[];
+    let totalumnos=0;
+    for(let i=0;i<clase.length;i++){
+        if(clase[i][0].toLowerCase()==x.toLowerCase()){
+            cont++;
+            m.push(clase[i][1]);
+            totalumnos+=clase[i][2];
+        }
+    }
+    mensaje+="El profesor "+x+" imparte "+cont+(cont>1? " módulos.\nLos módulos que imparte son: ":" módulo.\nEl módulo que imparte es: ");
+    for(let i=0;i<m.length;i++){
+        mensaje+=m[i]+" ";
+    }
+    mensaje+="\nEl profesor "+x+" tiene en total "+totalumnos+" alumnos\n";
+}else{
+    mensaje+=x+" no es profesor de ningún módulo.\n";
+}
+var media=0;
+for(let i=0;i<clase.length;i++){
+    media+=clase[i][2];
+}
+media/=clase.length;
+mensaje+="De media, un profesor tiene "+media+" alumnos por módulo.\n";
+var mayor=0;
+var profesor="";
+var modulo="";
+for(let i=0;i<clase.length;i++){
+    if(clase[i][2]>mayor){
+        mayor=clase[i][2];
+        profesor=clase[i][0];
+        modulo=clase[i][1];
+    }
+}
+mensaje+="El profesor con el módulo con mas alumnos es: "+profesor+" con "+mayor+" alumnos en el módulo "+modulo;
+alert(mensaje);
+*/
+/*
+5.	Haz solo la definición del array anterior empleando un formato literal.
+*//*
+var clase=[["Juan","ASJ",10],
+            ["Martin","GHA",20],
+            ["Beatriz","IHD",15],
+            ["Juan","AHAIG",30],
+            ["Alba","FOL",24],
+            ["Francisco","PES",19],
+            ["Francisco","VUA",18],
+            ["Juan","HAK",26],
+            ["Alberto","DSHU",14],
+            ["MartaSkate","ASDF",8]];
+*/
+/*
+6.	En este ejercicio (para abreviar) hacerlo para 15 alumnos y para los días Lunes, 
+    Martes y Miércoles (tendría que ser extensible para infinitos alumnos y al resto 
+    de los días de la semana con sólo cambiar los datos de entrada en los arrays).
+    a.	Crear un array mixto donde el índice del array es el código de la cuenta de 
+        usuario y el contenido para cada índice es el nombre del alumno que tiene dicha
+        cuenta de usuario.
+    b.	Crear un array mixto donde el índice es el nombre del módulo (abreviatura de 
+        cuatro letras) en el que puede estar matriculado un alumno y el contenido es 
+        el nombre del profesor que lo imparte.
+    c.	Crear un array bidimensional con el horario del curso (donde las filas 
+        representan la hora de clase (en ordinal: primera, segunda, tercera, ...) y 
+        las columnas representan los días de la semana (lunes, martes, ...), siendo 
+        el contenido el nombre del módulo (en abreviatura) que tiene el alumno ese día
+        a esa hora.
+     
+    |-----------------------|
+    |   DCLI	DINW	….  |
+    |   DCLI	DAW	    ….  |
+    |   DINW	EIEM	….  |
+    |   ….	    ….	    ….  |
+    |-----------------------|
+    
+    d.	Crear un array mixto donde el índice es la cuenta de usuario y el contenido es
+        un array denso con los módulos (abreviatura) en las que está matriculado cada 
+        alumno
+        Hacer un programa que pida por pantalla la cuenta de un usuario y nos muestre 
+        su horario, indicando profesor y asignatura que tiene en cada hora. 
+    
+    |-----------------------------------|
+    |   DCLI (Bea)	DINW (Ana)	    ….  |
+    |   DCLI (Bea)	DAW (María)	    ….  |
+    |   DINW (Ana)	-----------	    ….  |
+    |   ….	        ….	            ….  |
+    |-----------------------------------|
+
+    (La salida que ve el usuario que esté lo más ordenada posible. Si el usuario no 
+    estuviese matriculado en algún módulo puede rellenar el hueco con guiones)
+    Si la cuenta de usuario no existe tendrá que mostrar el error correspondiente.
+*/
+var alumnos={da1:"al001",
+            da2:"al002",
+            da3:"al003",
+            da4:"al004",
+            005:"al005",
+            006:"al006",
+            007:"al007",
+            da8:"al008",
+            009:"al009",
+            006:"al006",
+            012:"al012",
+            013:"al013",
+            014:"al014",
+            015:"al015",
+            018:"al18",
+            081:"al81"};
+
+alert(alumnos[009]);

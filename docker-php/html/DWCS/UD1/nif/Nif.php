@@ -26,11 +26,18 @@
             $this->letra= $this->calcularLetra($num);
         }
         public function mostrar(){
-            return $this->numero."-".$this->letra;
+            return $this->numero.$this->letra;
         }
         public function leer(){
             $num=readline("Introduce un numero de dni:");
             return $this->calcularLetra($num);
+        }
+        public function comprobarNif($nif){
+            $correcto=false;
+            if((strtoupper(substr($nif,(strlen($nif)-1),1)))==($this->calcularLetra(substr($nif,0,(strlen($nif)-1))))){
+                $correcto=true;
+            }
+            return $correcto;
         }
     }
 ?>

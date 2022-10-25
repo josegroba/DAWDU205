@@ -1,0 +1,37 @@
+<!DOCTYPE html> 
+<head> 
+<title>Ejercicio de selectores</title> 
+<style type="text/css"> 
+    /* Todos los elementos de la página */ 
+     *{ font: 1/1.3em Arial, Helvetica, sans-serif; } 
+    
+    /* Todos los parrafos de la página */ 
+     p{ color: #555; } 
+    
+    /* Todos los párrafos contenidos en #primero */ 
+     #primero p{ color: #336699; } 
+    
+    /* Todos los enlaces la página */ 
+     a{ color: #CC3300; } 
+    
+    /* Los elementos "em" contenidos en #primero */ 
+      #primero em{ background: #FFFFCC; padding: .1em; } 
+    
+    /* Todos los elementos "em" de clase "especial" en toda la página */ 
+      em.especial{ background: #FFCC99; border: 1px solid #FF9900; padding: .1em; } 
+    
+    /* Elementos "span" contenidos en .normal */ 
+     .normal span{ font-weight: bold; } 
+</style> 
+</head> 
+<body> 
+    <div id="primero"> 
+<p>Loremipsum dolor sit amet, <a href="#">consectetueradipiscingelit</a>. Praesentblanditnibh at felis.Sednecdiam in dolor vestibulumaliquet. Duisullamcorper, nisi non facilisismolestie, <em>loremsemaliquamnulla</em>, id laciniavelit mi vestibulumenim.</p>
+    </div> 
+    <div class="normal"> 
+<p>Phaselluseuvelitsedloremsodalesegestas.Utfeugiat.<span><a href="#">Donecporttitor</a>, magna euvariusluctus,</span>metusmassatristiquemassa, in imperdietestvelitvel magna. Phaselluserat.Duisrisus.<a href="#">Maecenas dictum</a>, nibh vitae pellentesqueauctor, tellusvelitconsectetuertellus, temporpretiumfelistellus at metus.</p>
+<p>Cumsociisnatoque<em class="especial">penatibus et magnis</em> dis parturient montes, nasceturridiculus mus. Proinaliquamconvallis ante. Pellentesquehabitantmorbitristiquesenectus et netus et malesuadafamesacturpisegestas. Nunc aliquet. Sed eumetus. Duis justo.</p> 
+<p>Donecfacilisisblanditvelit. Vestibulumnisi. Proinvolutpat, <em class="especial">enim id iaculiscongue</em>, orci justo ultrices tortor, <a href="#">quis lacinia eros libero in eros</a>. Sed malesuadaduivelquam. Integer at eros.</p> 
+    </div> 
+</body> 
+</html>
