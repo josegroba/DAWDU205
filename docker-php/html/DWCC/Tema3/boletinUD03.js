@@ -221,21 +221,77 @@ var clase=[["Juan","ASJ",10],
     estuviese matriculado en algún módulo puede rellenar el hueco con guiones)
     Si la cuenta de usuario no existe tendrá que mostrar el error correspondiente.
 */
-var alumnos={da1:"al001",
-            da2:"al002",
-            da3:"al003",
-            da4:"al004",
-            005:"al005",
-            006:"al006",
-            007:"al007",
-            da8:"al008",
-            009:"al009",
-            006:"al006",
-            012:"al012",
-            013:"al013",
-            014:"al014",
-            015:"al015",
-            018:"al18",
-            081:"al81"};
-
-alert(alumnos[009]);
+var  alumnos={da1:"al1",
+            da2:"al2",
+            da3:"al3",
+            da4:"al4",
+            da5:"al5",
+            da6:"al6",
+            da7:"al7",
+            da8:"al8",
+            da9:"al9",
+            da10:"al10",
+            da11:"al11",
+            da12:"al12",
+            da13:"al13",
+            da14:"al14",
+            da15:"al15"};
+var modulos={DCLI:"Juan",
+            DINW:"Alberto",
+            EIEM:"Marta",
+            HJAT:"María"};
+var horario=[{"hora":"primera","Lunes":"DCLI","Martes":"HJAT","Miercoles":"DINW"},
+            {"hora":"segunda","Lunes":"DCLI","Martes":"HJAT","Miercoles":"DINW"},
+            {"hora":"tercera","Lunes":"HJAT","Martes":"EIEM","Miercoles":"HJAT"},
+            {"hora":"cuarta","Lunes":"HJAT","Martes":"DCLI","Miercoles":"HJAT"},
+            {"hora":"quinta","Lunes":"DINW","Martes":"DCLI","Miercoles":"DCLI"},
+            {"hora":"sexta","Lunes":"EIEM","Martes":"DINW","Miercoles":"DCLI"}];
+var modulosAlumno={da1:["DCLI","DINW","EIEM","HJAT"],
+                    da2:["DCLI","DINW","EIEM","HJAT"],
+                    da3:["DCLI","EIEM","HJAT"],
+                    da4:["DCLI","DINW","EIEM","HJAT"],
+                    da5:["DCLI","HJAT"],
+                    da6:["DCLI","DINW","EIEM","HJAT"],
+                    da7:["DCLI","DINW","EIEM"],
+                    da8:["DCLI","DINW","EIEM","HJAT"],
+                    da9:["DCLI","DINW","EIEM"],
+                    da10:["DCLI","DINW","EIEM","HJAT"],
+                    da11:["DCLI","DINW","EIEM","HJAT"],
+                    da12:["DINW","EIEM","HJAT"],
+                    da13:["DCLI","DINW","HJAT"],
+                    da14:["EIEM","HJAT"],
+                    da15:["HJAT"]};
+var mensaje="";
+var x=prompt("Introduce el usuario");
+var encontrado=false;
+if(alumnos[x]!=undefined){
+    
+    for (let i in horario) {
+        if(i==0){
+            for (let key in horario[i]) {
+                mensaje+=key+"\t";
+            }
+            mensaje+="\n";
+        }
+        for (let key in horario[i]) {
+            if(key=="hora"){
+                mensaje+=horario[i][key]+"\t";
+            }else{
+                for (let z in modulosAlumno[x]){
+                    if(horario[i][key]==modulosAlumno[x][z]){
+                        mensaje+=horario[i][key]+" ("+modulos[modulosAlumno[x][z]]+")\t";
+                        encontrado=true;
+                    }
+                }
+                if(!encontrado){
+                    mensaje+="------------\t";
+                }
+                encontrado=false;
+            }
+        }
+        mensaje+="\n";
+    }
+}else{
+    mensaje+="La cuenta de usuario "+x+" no existe para ningún alumno.";
+}
+alert(mensaje);

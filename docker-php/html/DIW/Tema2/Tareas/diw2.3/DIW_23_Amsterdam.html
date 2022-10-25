@@ -7,54 +7,141 @@
     @font-face {
       font-family: amsterdam;
       src: url(dancing-script.woff2);
+    }html{
+      background-color: white;
     }
-    p:has(span){
-      position: fixed;
+    body{
+      background-color: #C20707;
+      font-family: Arial;
+      margin:0px;
+      box-sizing: border-box;
+    }
+    h1{
+      font-family:'Lucida Grande';
+      letter-spacing: 10px;
+      color: white;
+      margin: 10px;
+    }
+    .nota{
+      font-family: amsterdam;
+      background-color: white;
+      position: absolute;
       top: 0px;
       right: 0px;
       text-align: end;
       width: 250px;
+      margin: 0px;
     }
-    .nota{
-      font-family: amsterdam;
+    .sincuadro{
+      font-size: 12px;
+      margin: 10px;
+      color: white;
+    }
+    .span_nota{
+      font-family: Arial;
+      font-size: 8px;
+      font-weight: bold;
+    }
+    .cuadroI{
+      color: white;
+      background-color: black;
+      border-radius: 10px;
+      padding: 8px;
+      margin: 5px;
+      margin-left: 10px;
+      margin-right:10%;
+      font-size: 12px;
+    }
+    .cuadroD{
+      color: white;
+      background-color: black;
+      border-radius: 10px;
+      padding: 8px;
+      margin: 5px;
+      margin-left:10%;
+      font-size: 12px;
+    }
+    .amsterdam{
+      color: #C20707;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .sincuadro .amsterdam{
+      color: black;
+    }
+    .verde{
+      color: green;
+    }
+    .amarillo{
+      color: yellow;
+    }
+    .fondo{
+      background-color: white;
+      color: black;
+    }
+    .fin{
+      background-color: white;
+      height: 10px;
+      width: 50%;
+      border-radius: 5px;
+      margin: auto;
+    }
+    .pie{
+      background-color: white;
+      color: blue;
+      width: 50px;
+      position: relative;
+      bottom: 0px;
+      left: 20px;
+      font-size: 12px;
     }
   </style>
 </head>
 <body>
     <h1>Amsterdam</h1>
-    <p><span class="nota">Es maravilloso que nadie tenga que esperar nada  empezar a mejorar el mundo</span><br>
-    Ana Frank (Diario de una adolescente)</p>
-    <p>
-    Amsterdam, según la pronunciación etimológica (Acerca de este sonido Amsterdam [ɑmstər'dɑm]), es la capital oficial de los Países Bajos.   
+    <p class="nota">Es maravilloso que nadie tenga que esperar nada  empezar a mejorar el mundo<br>
+    <span class="span_nota">Anna Frank (Diario de una adolescente)</span></p>
+    <p class="sincuadro">
+    <span class="amsterdam">Amsterdam</span>, según la pronunciación etimológica (Acerca de este sonido Amsterdam [ɑmstər'dɑm]), es la capital oficial de los Países Bajos.   
     </p>
-    <p>
-      Amsterdam. Tiene una población de unos 810 000 habitantes y en su área metropolitana residen aproximadamente 1,5 millones. Cabe destacar que Ámsterdam forma parte de la gran conurbación neerlandesa llamada Randstad (junto con las ciudades de La Haya, Róterdam y Utrecht), que cuenta con más de 6,5 millones de habitantes. Este núcleo es una de las conurbaciones más grandes de Europa
-    </p>
-    <p>
-    Amsterdam. En Europa el primer rascacielos fue el Witte Huis construido en Róterdam, Países Bajos, en 1898 en estilo Art Nouveau con 43 metros y 10 pisos. En 1911 se construyó el Royal Liver Building en Liverpool, Reino Unido, de 90 metros y 13 pisos, considerado uno de los primeros rascacielos construidos completamente en hormigón
-    </p>
-    <p>
-      El centro histórico de la ciudad fue construido en gran parte en el siglo XVII y es hoy en día uno de los centros históricos más grandes de Europa. En aquella época se construyeron una serie de canales semicirculares alrededor del casco antiguo ya existente de la ciudad. 
-    </p>
-    <p>
-    El primer uso documentado del término «Amsterdam» aparece en un certificado del 27 de octubre de 1275, en que los habitantes, que habían construido un puente con una presa (dam en neerlandés) sobre el río Amstel, quedaban exentos de pontazgo por orden del conde Florentino V.  
-    </p>
-    <p>
-    El certificado, en latín, describe a los habitantes como homines manentes apud Amestelledamme («personas que viven cerca de Amestelledamme». En 1327, el nombre ya había evolucionado a Aemsterdam.
-    </p>
-    <p>
-    En neerlandés la pronunciación del nombre es aguda: [ɑmstər'dɑm]. Sin embargo, en español está muy extendida la pronunciación esdrújula, por lo que la ASALE recomienda la grafía Ámsterdam, con tilde.
-    </p>
-    <p>
-  En torno al siglo XIII Ámsterdam era un pueblo de pescadores. Según las leyendas, la ciudad fue fundada por dos pescadores de la provincia norteña de Frisia, que por casualidad acabaron en las orillas del río Amstel en un barquito, junto a su perro.[cita requerida]
-    </p>
-    <p>
-   La fecha tradicional de la fundación de la ciudad es el día 27 de octubre del año 1275, cuando a sus habitantes se les retiró la obligación de pagar peajes, que por entonces estaban asociados con los puentes neerlandeses.[cita requerida] 
-    </p>
-    <p>
-    En el año 1300 se le concedieron los derechos oficiales de ciudad, y a partir del siglo XIV Ámsterdam empezó a florecer como centro comercial, mayoritariamente a base del comercio con otras ciudades neerlandesas y alemanas, conocidas como la Liga Hanseática.
-    </p>   
-    <p>
+    <div class="cuadroI">
+      <p>
+        <span class="amsterdam">Amsterdam</span>. Tiene una población de unos 810 000 habitantes y en su área metropolitana residen aproximadamente 1,5 millones. Cabe destacar que Ámsterdam forma parte de la gran conurbación neerlandesa llamada <span class="verde">Randstad</span> (junto con las ciudades de La Haya, Róterdam y Utrecht), que cuenta con más de 6,5 millones de habitantes. Este núcleo es una de las conurbaciones más grandes de <span class="verde">Europa</span>
+      </p>
+      <p>
+        <span class="amsterdam">Amsterdam</span>. En <span class="verde">Europa</span> el primer rascacielos fue el <span class="amarillo">Witte Huis</span> construido en <span class="verde">Róterdam</span>, Países Bajos, en 1898 en estilo Art Nouveau con 43 metros y 10 pisos. En 1911 se construyó el Royal Liver Building en <span class="verde">Liverpool, Reino Unido</span>, de 90 metros y 13 pisos, considerado uno de los primeros rascacielos construidos completamente en hormigón
+      </p>
+    </div>
+    <div class="cuadroD">
+      <p>
+        El centro histórico de la ciudad fue construido en gran parte en el siglo XVII y es hoy en día uno de los centros históricos más grandes de Europa. En aquella época se construyeron una serie de canales semicirculares alrededor del casco antiguo ya existente de la ciudad. 
+      </p>
+      <p>
+      El primer uso documentado del término «<span class="amsterdam">Amsterdam</span>» aparece en un certificado del <span class="fondo">27 de octubre de 1275</span>, en que los habitantes, que habían construido un puente con una presa (dam en neerlandés) sobre el río Amstel, quedaban exentos de pontazgo por orden del conde Florentino V.  
+      </p>
+    </div>
+    <div class="cuadroI">
+      <p>
+      El certificado, en latín, describe a los habitantes como homines manentes apud Amestelledamme («personas que viven cerca de Amestelledamme». En 1327, el nombre ya había evolucionado a Aemsterdam.
+      </p>
+      <p>
+      En neerlandés la pronunciación del nombre es aguda: [ɑmstər'dɑm]. Sin embargo, <span class="amarillo">en español está muy extendida la pronunciación esdrújula, por lo que la ASALE recomienda</span> la grafía Ámsterdam, con tilde.
+      </p>
+      <p>
+    En torno al siglo XIII Ámsterdam era un pueblo de pescadores. Según las leyendas, la ciudad fue fundada por dos pescadores de la provincia norteña de Frisia, que por casualidad acabaron en las orillas del río Amstel en un barquito, junto a su perro.[cita requerida]
+      </p>
+    </div>
+    <div class="cuadroD">
+      <p>
+        La fecha tradicional de la fundación de la ciudad es el día <span class="fondo">27 de octubre del año 1275</span>, cuando a sus habitantes se les retiró la obligación de pagar peajes, que por entonces estaban asociados con los puentes neerlandeses.[cita requerida] 
+      </p>
+      <p>
+        En el año 1300 se le concedieron los derechos oficiales de ciudad, y a partir del siglo XIV Ámsterdam empezó a florecer como centro comercial, mayoritariamente a base del comercio con otras ciudades neerlandesas y alemanas, conocidas como la Liga Hanseática.
+      </p>
+    </div>
+    <div class="fin">
+    </div>
+    <p class="pie">
     Hastiales
     </p>
 </body>
