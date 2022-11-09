@@ -1,4 +1,3 @@
-
 /*
 1.	Crea un array con los nombres de los siguientes países: 
     España, Francia, Suecia, Italia, Noruega, Portugal, Holanda.
@@ -220,7 +219,7 @@ var clase=[["Juan","ASJ",10],
     (La salida que ve el usuario que esté lo más ordenada posible. Si el usuario no 
     estuviese matriculado en algún módulo puede rellenar el hueco con guiones)
     Si la cuenta de usuario no existe tendrá que mostrar el error correspondiente.
-*/
+*//*
 var  alumnos={da1:"al1",
             da2:"al2",
             da3:"al3",
@@ -295,3 +294,247 @@ if(alumnos[x]!=undefined){
     mensaje+="La cuenta de usuario "+x+" no existe para ningún alumno.";
 }
 alert(mensaje);
+*/
+//7.	Hacer una función que nos devuelva el mayor de dos números.
+/*
+var mensaje="Ejercicio 7.\tHacer una función que nos devuelva el mayor de dos números:\n";
+var n1=prompt("Introduce el primero de los números para comprobar cual es mayor.");
+var n2=prompt("Introduce el segundo de los números para comprobar cual es mayor.");
+if(n1==parseInt(n1)&&n2==parseInt(n2)){
+    if(n1>n2){
+        mensaje+=n1+" es mayor que "+n2;
+    }
+    if(n1<n2){
+        mensaje+=n2+" es mayor que "+n1;
+    }
+    if(n1==n2){
+        mensaje+="Los dos números son iguales.";
+    }
+}else if(n1==null||n2==null){
+    mensaje+="Ha cancelado el programa.";
+}else if(n1.trim()==""||n2.trim()==""){
+    if(n1.trim()==""){
+        mensaje+="No has introducido nada en el primer número.\n";
+    }
+    if(n2.trim()==""){
+        mensaje+="No has introducido nada en el segundo número.";
+    }
+}else{
+    if(n1!=parseInt(n1)){
+        mensaje+="No has introducido un valor correcto como 1º número\n";
+    }
+    if(n2!=parseInt(n2)){
+        mensaje+="No has introducido un valor correcto como 2º número";
+    }
+}
+alert(mensaje);
+*/
+
+//8.	Hacer una función que nos devuelva el mayor y el menor de los números almacenados en un array.
+/*
+var mensaje="Ejercicio 8\tHacer una función que nos devuelva el mayor y el menor de los números almacenados en un array:\n";
+var numeros=[54,654,98,4,2418,89,5649,28975,897513,89,21384,85487,21388,9981,321878,1278];
+function buscaMayor(array){
+    let mayor=0;
+    let posicion;
+    array.forEach(element=> {
+        if(element>mayor){
+            mayor=element;
+        }
+    });
+    return mayor;
+}
+mensaje+="El número mayor es: "+buscaMayor(numeros);
+alert(mensaje);
+*/
+
+//9.	Hacer una función que nos devuelva la posición que ocupa el mayor de los elementos de un array.
+/*
+var mensaje="Ejercicio 8\tHacer una función que nos devuelva la posición que ocupa el mayor de los elementos de un array:\n";
+var numeros=[54,654,98,4,2418,89,5649,28975,897513,89,21384,85487,21388,9981,321878,1278];
+function buscaPosicionMayor(array){
+    let mayor=0;
+    let posicion;
+    for (let pos in numeros) {
+        if(numeros[pos]>mayor){
+            mayor=numeros[pos];
+            posicion=pos;
+        }
+    }
+    return posicion;
+}
+mensaje+="El número mayor es: "+numeros[buscaPosicionMayor(numeros)]+" y está en la posición "+buscaPosicionMayor(numeros);
+alert(mensaje);
+*/
+
+//10.	Hacer una función que devuelva verdad o falso si un número es un término de Fibonacci.
+/*
+var mensaje="Ejercicio10\tHacer una función que devuelva verdad o falso si un número es un término de Fibonacci:\n";
+function esFibonacci(x){
+    let pertenece=false;
+    n1=0;
+    n2=1;
+    do{
+        if(n1==x){
+            pertenece=true;
+        }
+        sum=n1+n2;
+        n1=n2;
+        n2=sum;
+    }while(x>=n1);
+    return pertenece;
+}
+mensaje+=esFibonacci(98653);
+alert(mensaje);
+*/
+
+//  -----------------------------------------------
+//  |    Para hacer con el ejercicio número 6:    |
+//  -----------------------------------------------
+
+//11.	Hacer una función que diga si un alumno está matriculado en un módulo.
+/*
+var mensaje="Ejercicio 11\tHacer una función que diga si un alumno está matriculado en un módulo.\n";
+var modulosAlumno={da1:["DCLI","DINW","EIEM","HJAT"],
+                    da2:["DCLI","DINW","EIEM","HJAT"],
+                    da3:["DCLI","EIEM","HJAT"],
+                    da4:["DCLI","DINW","EIEM","HJAT"],
+                    da5:["DCLI","HJAT"],
+                    da6:["DCLI","DINW","EIEM","HJAT"],
+                    da7:["DCLI","DINW","EIEM"],
+                    da8:["DCLI","DINW","EIEM","HJAT"],
+                    da9:["DCLI","DINW","EIEM"],
+                    da10:["DCLI","DINW","EIEM","HJAT"],
+                    da11:["DCLI","DINW","EIEM","HJAT"],
+                    da12:["DINW","EIEM","HJAT"],
+                    da13:["DCLI","DINW","HJAT"],
+                    da14:["EIEM","HJAT"],
+                    da15:["HJAT"]};
+function estaMatriculado(alumno,modulo){
+    return modulosAlumno[alumno].includes(modulo);
+}
+var alumno=prompt("Introduce el nombre del alumno.");
+var modulo=prompt("Introduce el módulo para comprobar si el alumno está matriculado en el.");
+mensaje+="El alumno "+alumno+(estaMatriculado(alumno,modulo)? "":" no")+" está matriculado en el módulo "+modulo+".";
+alert(mensaje);
+*/
+
+//12.	Hacer una función que diga si un alumno tiene clase un día de la semana en concreto.
+/*
+var mensaje="Ejercicio 12\tHacer una función que diga si un alumno tiene clase un día de la semana en concreto.\n";
+var horario=[{"hora":"primera","Lunes":"DCLI","Martes":"HJAT","Miercoles":"DINW"},
+            {"hora":"segunda","Lunes":"DCLI","Martes":"HJAT","Miercoles":"DINW"},
+            {"hora":"tercera","Lunes":"HJAT","Martes":"EIEM","Miercoles":"HJAT"},
+            {"hora":"cuarta","Lunes":"HJAT","Martes":"DCLI","Miercoles":"HJAT"},
+            {"hora":"quinta","Lunes":"DINW","Martes":"DCLI","Miercoles":"DCLI"},
+            {"hora":"sexta","Lunes":"EIEM","Martes":"DINW","Miercoles":"DCLI"}];
+var modulosAlumno={da1:["DCLI","DINW","EIEM","HJAT"],
+                    da2:["DCLI","DINW","EIEM","HJAT"],
+                    da3:["DCLI","EIEM","HJAT"],
+                    da4:["DCLI","DINW","EIEM","HJAT"],
+                    da5:["DCLI","HJAT"],
+                    da6:["DCLI","DINW","EIEM","HJAT"],
+                    da7:["DCLI","DINW","EIEM"],
+                    da8:["DCLI","DINW","EIEM","HJAT"],
+                    da9:["DCLI","DINW","EIEM"],
+                    da10:["DCLI","DINW","EIEM","HJAT"],
+                    da11:["DCLI","DINW","EIEM","HJAT"],
+                    da12:["DINW","EIEM","HJAT"],
+                    da13:["DCLI","DINW","HJAT"],
+                    da14:["EIEM"],
+                    da15:["HJAT"]};
+function tieneClase(alumno,dia){
+    tiene=false;
+    horario.forEach(hora => {
+        if(modulosAlumno[alumno].includes(hora[dia])){
+            tiene=true;
+        }
+    });
+    return tiene;
+}
+var alumno=prompt("Introduce el nombre del alumno.");
+var dia=prompt("Introduce el día de la semana para ver si el alumno tiene clase.");
+mensaje+="El alumno "+alumno+(tieneClase(alumno,dia)? "":" no")+" tiene clase el "+dia+".";
+alert(mensaje);
+*/
+
+//13.	Hacer una función que diga el número de alumnos que están matriculados en un módulo concreto.
+/*
+var mensaje="Ejercicio 13\tHacer una función que diga el número de alumnos que están matriculados en un módulo concreto.\n";
+var modulosAlumno={da1:["DCLI","DINW","EIEM","HJAT"],
+                    da2:["DCLI","DINW","EIEM","HJAT"],
+                    da3:["DCLI","EIEM","HJAT"],
+                    da4:["DCLI","DINW","EIEM","HJAT"],
+                    da5:["DCLI","HJAT"],
+                    da6:["DCLI","DINW","EIEM","HJAT"],
+                    da7:["DCLI","DINW","EIEM"],
+                    da8:["DCLI","DINW","EIEM","HJAT"],
+                    da9:["DCLI","DINW","EIEM"],
+                    da10:["DCLI","DINW","EIEM","HJAT"],
+                    da11:["DCLI","DINW","EIEM","HJAT"],
+                    da12:["DINW","EIEM","HJAT"],
+                    da13:["DCLI","DINW","HJAT"],
+                    da14:["EIEM","HJAT"],
+                    da15:["HJAT"]};
+function totalAlumnosModulo(modulo){
+    let cont=0;
+    for (const a in modulosAlumno) {
+        if(modulosAlumno[a].includes(modulo)){
+            cont++
+        }
+    }
+    return cont;
+}
+var modulo=prompt("Introduce un modulo para ver cuantos alumnos tiene matriculados");
+mensaje+="El módulo "+modulo+" tiene un total de "+totalAlumnosModulo(modulo)+" alumnos.";
+alert(mensaje);
+*/
+
+/*
+14.	Definir un objeto Grupo que tendrá:
+    Como propiedades:
+        •	Nombre del grupo.
+        •	Lista de alumnos del grupo (array denso).
+        •	Tutor del grupo.
+        •	Delegado del grupo.
+        •	Subdelegado del grupo.
+    Como métodos:
+        •	Establecer el nombre del grupo.
+        •	Establecer el nombre del tutor.
+        •	Establecer el nombre del delegado.
+        •	Establecer el nombre del subdelegado.
+        •	Añadir un nombre de alumno a la lista.
+        •	Eliminar un nombre de alumno de la lista. 
+        •	Devolver el nombre del grupo.
+        •	Devolver el nombre del tutor.
+        •	Devolver el nombre del delegado.
+        •	Devolver el nombre del subdelegado.
+        •	Devolver la lista de alumnos.
+*/
+
+function grupo(nombre,alumnos,tutor,delegado,subdelegado){
+    this.nombre=nombre;
+    this.alumnos=alumnos;
+    this.tutor=tutor;
+    this.delegado=delegado;
+    this.subdelegado=subdelegado;
+
+    this.setNombre= function setNombre(nombre){
+                        this.nombre=nombre;
+                    };
+    this.setTutor= function setTutor(tutor){
+                        this.tutor=tutor;
+                    };
+    this.setDelegado= function setDelegado(delegado){
+                        this.delegado=delegado;
+                    };
+    this.setSubdelegado= function setSubdelegado(subdelegado){
+                        this.subdelegado=subdelegado;
+                    };
+    this.añadirAlumno=function añadirAlumno(alumno){
+                        this.alumnos.push(alumno);
+                    };
+    this.eliminarAlumno=function eliminarAlumno(alumno){
+        this.a
+    };
+}
