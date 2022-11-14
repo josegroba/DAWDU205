@@ -1,0 +1,116 @@
+@font-face {
+  font-family: "MiMenu";
+  src: url("menu.woff");
+}
+
+[class^="icon-"], [class*="icon-"] {
+  margin-right: 3px;
+  font-family: "Mimenu";
+  font-style: normal;
+}
+
+.icon-inicio::before {
+  content: "\e900";
+}
+.icon-anadir::before {
+  content: "\ea0a";
+}
+.icon-listar::before {
+  content: "\e922";
+}
+.icon-borrar::before {
+  content: "\ea0b";
+}
+.icon-buscar::before {
+  content: "\e986";
+}
+.icon-modificar::before {
+  content: "\e905";
+}
+.icon-salir::before {
+  content: "\e9b6";
+}
+
+html{
+  background-color: #CCCCCC;
+  font-family: "Arial";
+}
+.lista1{
+  display:flex;
+}
+.lista1 li{
+  display: flex;
+  background-color: #87CE96;
+  border: 5px #BC85D8 dashed;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin: 10px;
+  height: 40px;
+  width: 170px;
+}
+.lista2{
+  display: flex;
+  justify-content: right;
+}
+.lista2 li{
+  display: flex;
+  background-color: white;
+  padding: 5px;
+  border-bottom: 1px black solid;
+  border-right: 1px black solid;
+  margin: 5px;
+}
+.lista3{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px black solid;
+  width: 170px;
+}
+.lista3 li{
+  display: flex;
+  background-color: white;
+  border: 1px black solid;
+  margin: 5px;
+  padding: 5px;
+  justify-content: center;
+}
+.lista4{
+  display: flex;
+  justify-content: right;
+}
+.lista4 li{
+  display: flex;
+  background-color: white;
+  color: #568CD0;
+  width: 140px;
+  padding: 5px;
+  margin: 1px;
+  justify-content: center;
+}
+.lista4 li.par{
+  background-color: #568CD0;
+  color:white;
+}
+.lista5{
+  display: flex;
+}
+.lista5 li{
+  display: flex;
+  margin: 10px;
+}
+.lista6{
+  display: flex;
+  justify-content: right;
+}
+.lista6 li{
+  display: flex;
+  border: 2px black solid;
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+}

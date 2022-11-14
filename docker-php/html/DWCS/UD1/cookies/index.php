@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["color"])) {
     setcookie("color",$color,time()+3600);
     if(!isset($_COOKIE["contador"])|| $_COOKIE["color"]!=$color){
         $cont ++;
-        setcookie("contador",$cont,time()+3600);
+        setcookie("contador",$cont);
     }
 }  else {
     if (isset($_COOKIE["color"])) {

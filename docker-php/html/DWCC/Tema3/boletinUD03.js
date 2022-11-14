@@ -511,7 +511,7 @@ alert(mensaje);
         •	Devolver el nombre del subdelegado.
         •	Devolver la lista de alumnos.
 */
-
+/*
 function grupo(nombre,alumnos,tutor,delegado,subdelegado){
     this.nombre=nombre;
     this.alumnos=alumnos;
@@ -519,22 +519,147 @@ function grupo(nombre,alumnos,tutor,delegado,subdelegado){
     this.delegado=delegado;
     this.subdelegado=subdelegado;
 
-    this.setNombre= function setNombre(nombre){
+    this.setNombre= function (nombre){
                         this.nombre=nombre;
                     };
-    this.setTutor= function setTutor(tutor){
+    this.setTutor= function (tutor){
                         this.tutor=tutor;
                     };
-    this.setDelegado= function setDelegado(delegado){
+    this.setDelegado= function (delegado){
                         this.delegado=delegado;
                     };
-    this.setSubdelegado= function setSubdelegado(subdelegado){
+    this.setSubdelegado= function (subdelegado){
                         this.subdelegado=subdelegado;
                     };
-    this.añadirAlumno=function añadirAlumno(alumno){
+    this.añadirAlumno=function (alumno){
                         this.alumnos.push(alumno);
                     };
-    this.eliminarAlumno=function eliminarAlumno(alumno){
-        this.a
+    this.eliminarAlumno=function (alumno){
+                        this.alumnos= this.alumnos.filter((nombre) => nombre!= alumno);
+                    };
+    this.getNombre=function (){
+                    return this.nombre;
+                };
+    this.getTutor=function (){
+                    return this.tutor;
+                };
+    this.getDelegado=function (){
+                    return this.delegado;
+                };
+    this.getSubdelegado=function (){
+                    return this.subdelegado;
+                };
+    this.getAlumnos=function (){
+                    let toret=this.nombre+":\n";
+                    this.alumnos.forEach(alumno => {
+                        toret+=alumno+"\n";
+                    });
+                    return toret;
+                };
+}
+*/
+
+/*
+15.	El programa tendrá una serie de variables globales:
+•	Base que es una array literal con los valores Normal, Fina y Roll .
+•	Salsa que es un array denso con los valores Sin, Barbacoa, Tomate, Crema.
+•	Queso que es un array literal con los valores Sin, Normal, Extra, Doble.
+•	Tamaño que es un array denso con los valores Pequeña, Mediana, Grande y Familiar.
+•	Oferta que es un array denso con los valores Sin oferta, 2x1, Bebida gratis, Alitas gratis, Helado gratis.
+•	Ingredientes que es un array denso que contiene los posibles ingredientes que puede haber en una pizza.
+Definir un objeto Pizza que tendrá:
+Como propiedades:
+•	Base que contendrá la base elegida.
+•	Salsa que contendrá la salsa elegida.
+•	Queso que contendrá el queso elegido.
+•	Tamaño que contendrá el tamaño elegido.
+•	Oferta que contendrá la oferta elegida.
+•	Número de ingredientes que será un valor numérico en función del número de ingredientes elegidos.
+•	Ingredientes que es un array con los ingredientes que forman parte de la pizza y que son elegidos por el usuario.
+Como métodos:
+ 
+•	Establecer el valor de la base.
+•	Establecer el valor de la salsa.
+•	Establecer el valor de la cantidad de queso.
+•	Establecer el valor del tamaño.
+•	Establecer el valor de la oferta.
+•	Establecer el número de ingredientes.
+•	Añadir un ingrediente a la lista.
+•	Eliminar un ingrediente de la lista.
+•	Devolver el valor de la base.
+•	Devolver el valor de la salsa.
+•	Devolver el valor del queso.
+•	Devolver el valor del tamaño.
+•	Devolver el valor de la oferta.
+•	Devolver el número de ingredientes.
+•	Devolver la lista de ingredientes. 
+*/
+
+var base=["Normal","Fina","Roll"];  //Array literal
+var salsa=new Array("Sin","Barbacoa","Tomate","Crema"); //Array denso
+var queso=["Sin","Normal","Extra","Doble"];
+var tamaño=new Array("Pequeña","Mediana","Grande","Familiar");
+var oferta=new Array("Sin oferta","2x1","Bebida gratis","Alitas gratis","Helado gratis");
+var ingredientes=new Array("Jamon","Tomate","Peperoni","Bacon","Piña","Atun","Aceitunas");
+
+function Pizza(base,salsa,queso,tamaño,oferta,ingredientes){
+    this.base=base;
+    this.salsa=salsa;
+    this.queso=queso;
+    this.tamaño=tamaño;
+    this.oferta=oferta;
+    this.numIngredientes=ingredientes.length;
+    this.ingredientes=ingredientes;
+
+    this.setBase=function (base){
+        this.base=base;
+    };
+    this.setSalsa=function (salsa){
+        this.salsa=salsa;
+    };
+    this.setQueso=function (queso){
+        this.queso=queso;
+    };
+    this.setTamaño=function (tamaño){
+        this.tamaño=tamaño;
+    };
+    this.oferta= function (oferta){
+        this.oferta=oferta;
+    };
+    this.setNumIngredientes=function (){
+        this.numIngredientes=ingredientes.length;
+    };
+    this.añadirIngrediente=function(ingrediente){
+        this.ingredientes.push(ingrediente);
+        this.setNumIngredientes();
+    };
+    this.eliminarIngrediente=function(ingrediente){
+        this.ingredientes=this.ingredientes.filter((elemento) => elemento!= ingrediente);
+        this.setNumIngredientes();
+    };
+    this.getBase =function (){
+        return this.base;
+    };
+    this.getSalsa =function (){
+        return this.salsa;
+    };
+    this.getQueso =function (){
+        return this.queso;
+    };
+    this.getTamaño =function (){
+        return this.tamaño;
+    };
+    this.getOferta =function (){
+        return this.oferta;
+    };
+    this.getNumIngredientes =function (){
+        return this.numIngredientes;
+    };
+    this.getIngredientes =function (){
+        let toret="Ingredientes: \n";
+        ingredientes.forEach(ingrediente => {
+            toret+="- "+ingrediente+"\n";
+        });
+        return toret;
     };
 }

@@ -1,0 +1,19 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+.tabla1{
+    border: 1px black solid;
+    background-color: #E5EBF3;
+    padding: 10px;
+    border-collapse: separate;
+}
+.tabla1 th{
+    background-color: #D26526;
+    color: white;
+    padding: 3px;
+    margin: 5px;
+}
+.tabla1 td{
+    border: 1px black solid;
+}
