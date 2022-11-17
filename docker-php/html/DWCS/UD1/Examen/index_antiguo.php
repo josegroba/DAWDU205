@@ -3,19 +3,17 @@
 
 //Variables
 //Crea la constante PALABRA con el array "suerte","GANAR","perder","aprobar"  (1 punto)
-
-const palabras =array("suerte","GANAR","perder","aprobar");
-$palabra="APROBAR";
+/*
+$palabra = "APROBAR";
 $palabra_oculta = "______"; //Tantos guiones como letras tiene $palabra
 $letras = [];  // Letras jugadas por el jugador en la partida actual
 $vidas = 7; //Vidas de las que dispone el jugador para adivinar la $palabra
 $mensaje = null;  //Mensajes a mostrar el jugador: letra repetida, ha gando, ha perdido, ...
 $partidas_jugadas = 0;  //Partidas totales jugadas por el jugador
 $partidas_ganadas = 0; //Partidas ganadas por el jugador
-
+*/
 //Código que necesites incluir y no este definido --> (0,25 puntos)
-$ganar=null;
-session_start();
+
 //-------
 //Funciones necesarias para desarrollar el juego
 /**
@@ -27,21 +25,7 @@ session_start();
  * @return mixed Devuelve "false" si no se encuentra la letra en la palabra,
  *               en otro caso devuelve un "array" con las posiciones de esta
  */
-function posicionesLetra($letra,$palabra){
-    $letra=strtolower($letra);
-    $palabra=strtolower($palabra);
-    if(str_contains($palabra,$letra)){
-        $posiciones=[];
-        for($i=0;$i<strlen($palabra);$i++){
-            if($letra==substr($palabra,$i,1)){
-                array_push($posiciones,$i);
-            }
-        }
-        return $posiciones;
-    }else{
-        return false;
-    }
-}
+
  
 
 
@@ -57,13 +41,7 @@ function posicionesLetra($letra,$palabra){
  * @param  mixed $letra letra a colocar en la palabra
  * @return string palabra oculta con la letra en sus posiciones  
  */
-function colocarLetras($palabra_oculta,$posiciones,$letra){
-    $letra=strtolower($letra);
-    foreach($posiciones as $pos){
-        $palabra_oculta=substr_replace($palabra_oculta,$letra,$pos,1);
-    }
-    return $palabra_oculta;
-}
+
 
 
 
@@ -82,14 +60,7 @@ function colocarLetras($palabra_oculta,$posiciones,$letra){
  * @param  mixed $partidas_ganadas número de partidas ganadas por el jugador
  * @return void
  */
-function cargarEstadoJuego(&$palabra,&$palabra_oculta,&$letras,&$vidas,&$partidas_jugadas,&$partidas_ganadas){
-    if(isset($_SESSION["palabra"]))$palabra=$_SESSION["palabra"];
-    if(isset($_SESSION["palabra_oculta"]))$palabra_oculta=$_SESSION["palabra_oculta"];
-    if(isset($_SESSION["letras"]))$letras=$_SESSION["letras"];
-    if(isset($_SESSION["vidas"]))$vidas=$_SESSION["vidas"];
-    if(isset($_SESSION["pjugadas"]))$partidas_jugadas=$_SESSION["pjugadas"];
-    if(isset($_SESSION["pganadas"]))$partidas_ganadas=$_SESSION["pganadas"];
-}
+
 
 
 
@@ -118,15 +89,7 @@ function cargarEstadoJuego(&$palabra,&$palabra_oculta,&$letras,&$vidas,&$partida
  * @param  mixed $partidas_ganadas [default null] número de partidas ganadas por el jugador
  * @return void
  */
-function iniciarJuego(&$palabra,&$palabra_oculta,&$letras,&$vidas,&$ganar=null,&$partidas_jugadas=null,&$partidas_ganadas=null){
-    $palabra=palabras[rand(0,3)];
-    $palabra_oculta = "";
-    for($i=0;$i<strlen($palabra);$i++){
-        $palabra_oculta=$palabra_oculta."_";
-    }
-    $letras=[];
-    $vidas=7;
-}
+
  
 
 
@@ -145,14 +108,7 @@ function iniciarJuego(&$palabra,&$palabra_oculta,&$letras,&$vidas,&$ganar=null,&
  * @param  mixed $vidas vidas que le restan al jugador en la partida actual
  * @return void
  */
-function guardarEstadoJuego(&$palabra,&$palabra_oculta,&$letras,&$vidas,&$partidas_jugadas,&$partidas_ganadas){
-    $_SESSION["palabra"]=$palabra;
-    $_SESSION["palabra_oculta"]=$palabra_oculta;
-    $_SESSION["letras"]=$letras;
-    $_SESSION["vidas"]=$vidas;
-    $_SESSION["pjugadas"]=$partidas_jugadas;
-    $_SESSION["pganadas"]=$partidas_ganadas;
-}
+
 
 
 
@@ -161,45 +117,107 @@ function guardarEstadoJuego(&$palabra,&$palabra_oculta,&$letras,&$vidas,&$partid
 /*
 Utiliza aquí las funciones creadas anteriormente y haz que el juego funcione
 */
-cargarEstadoJuego($palabra,$palabra_oculta,$letras,$vidas,$partidas_jugadas,$partidas_ganadas);
-if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["letra"])) {
-    $letra=strtolower($_POST["letra"]);
-    if(trim($letra)!=""){
-        if(in_array($letra, $letras)){
-            $mensaje="La letra ".$letra." ya está puesta.";
-        }else{
-            array_push($letras,$letra);
-            if(posicionesLetra($letra,$palabra)){
-                $palabra_oculta=colocarLetras($palabra_oculta,posicionesLetra($letra,$palabra),$letra);
-                if($palabra==$palabra_oculta){
-                    $mensaje="Ha ganado!";
-                    $partidas_jugadas++;
-                    $partidas_ganadas++;
-                    $ganar=true;
-                }
-            }else{
-                $vidas--;
-                if($vidas>0){
-                    $mensaje="La letra ".$letra." no está en la palabra buscada.";
-                }else{
-                    $mensaje="Lo siento, ha perdido.";
-                    $partidas_jugadas++;
-                    $ganar=false;
-                }
-            }
-        }
-    }
-}
-if($ganar||$vidas==0){
-    iniciarJuego($palabra,$palabra_oculta,$letras,$vidas,$ganar,$partidas_jugadas,$partidas_ganadas);
-}
-guardarEstadoJuego($palabra,$palabra_oculta,$letras,$vidas,$partidas_jugadas,$partidas_ganadas);
+
+
+
 
 
 
 
 
 //Mostrar datos (1 punto)
+
+session_start();
+$palabras=["suerte","ganar","perder","aprobar"];
+$palabra_oculta="";
+$vidas=7;
+$letras = [];
+$mensaje = null;
+$partidas_jugadas = 0;
+$partidas_ganadas = 0;
+$fin=true;
+if(isset($_SESSION["vidas"])&&$_SESSION["vidas"]!=0){
+    $vidas=$_SESSION["vidas"];
+}
+if(isset($_SESSION["fin"])){
+    $fin=$_SESSION["fin"];
+}
+if($vidas==7&&$fin){
+    unset($_SESSION['palabra']);
+    unset($_SESSION["mensaje"]);
+    unset($_SESSION["letras"]);
+}
+if(isset($_SESSION["palabra"])){
+    $palabra=$_SESSION["palabra"];
+}else{
+    $palabra=$palabras[rand(0,3)];
+    $_SESSION["palabra"]=$palabra;
+    for($i=0;$i<strlen($palabra);$i++){
+        $palabra_oculta=$palabra_oculta."_";
+    }
+    $_SESSION["palabra_oculta"]=$palabra_oculta;
+}
+if(isset($_SESSION["palabra_oculta"])){
+    $palabra_oculta=$_SESSION["palabra_oculta"];
+}
+if(isset($_SESSION["letras"])){
+    $letras=$_SESSION["letras"];
+}
+if(isset($_SESSION["pjugadas"])){
+    $partidas_jugadas=$_SESSION["pjugadas"];
+}
+if(isset($_SESSION["pganadas"])){
+    $partidas_ganadas=$_SESSION["pganadas"];
+}
+if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["letra"])) {
+    $letra=$_POST["letra"];
+    if(trim($letra)!=""){
+        if(in_array($letra, $letras)||(isset($_SESSION["letra_nueva"])&&$_SESSION["letra_nueva"]==$letra)){
+            if(in_array($letra, $letras)){
+                $mensaje="La letra ".$letra." ya está puesta.";
+            }
+        }else{
+            if(str_contains($palabra,$letra)){
+                for($i=0;$i<strlen($palabra);$i++){
+                    if($letra==substr($palabra,$i,1)){
+                        $palabra_oculta=substr_replace($palabra_oculta,$letra,$i,1);
+                    }
+                }
+                array_push($letras,$letra);
+                if($palabra_oculta==$palabra){
+                    $mensaje="Felicidades. Ha ganado la partida!!";
+                    $vidas=0;
+                    ++$partidas_ganadas;
+                    ++$partidas_jugadas;
+                    $fin=true;
+                }else{
+                    $fin=false;
+                }
+            }else{
+                --$vidas;
+                if($vidas==0){
+                    $mensaje="Se le han acabado las vidas!! Ha perdido.";
+                    ++$partidas_jugadas;
+                    $fin=true;
+                }else{
+                    $mensaje="La letra ".$letra." no está en la palabra.";
+                    array_push($letras,$letra);
+                    $fin=false;
+                }
+            }
+        }
+        $_SESSION["palabra_oculta"]=$palabra_oculta;
+        $_SESSION["pganadas"]=$partidas_ganadas;
+        $_SESSION["pjugadas"]=$partidas_jugadas;
+        $_SESSION["vidas"]=$vidas;
+        $_SESSION["mensaje"]=$mensaje;
+        $_SESSION["letras"]=$letras;
+        $_SESSION["letra_nueva"]=$letra;
+        $_SESSION["fin"]=$fin;
+    }
+}
+
+
 $mostrar_letras="";
 foreach($letras as $letra){
     $mostrar_letras=$mostrar_letras.$letra." - ";

@@ -334,30 +334,33 @@ alert(mensaje);
 /*
 var mensaje="Ejercicio 8\tHacer una función que nos devuelva el mayor y el menor de los números almacenados en un array:\n";
 var numeros=[54,654,98,4,2418,89,5649,28975,897513,89,21384,85487,21388,9981,321878,1278];
-function buscaMayor(array){
-    let mayor=0;
-    let posicion;
+function buscaMayorYMenor(array){
+    let mayor=array[0];
+    let menor=array[0];
     array.forEach(element=> {
         if(element>mayor){
             mayor=element;
         }
+        if(element<menor){
+            menor=element;
+        }
     });
-    return mayor;
+    return [menor,mayor];
 }
-mensaje+="El número mayor es: "+buscaMayor(numeros);
+mensaje+="El número mayor es: "+buscaMayorYMenor(numeros)[1]+"\nEl número menor es: "+buscaMayorYMenor(numeros)[0];
 alert(mensaje);
 */
 
 //9.	Hacer una función que nos devuelva la posición que ocupa el mayor de los elementos de un array.
-/*
+
 var mensaje="Ejercicio 8\tHacer una función que nos devuelva la posición que ocupa el mayor de los elementos de un array:\n";
 var numeros=[54,654,98,4,2418,89,5649,28975,897513,89,21384,85487,21388,9981,321878,1278];
 function buscaPosicionMayor(array){
-    let mayor=0;
+    let mayor=array[0];
     let posicion;
-    for (let pos in numeros) {
-        if(numeros[pos]>mayor){
-            mayor=numeros[pos];
+    for (let pos in array) {
+        if(array[pos]>mayor){
+            mayor=array[pos];
             posicion=pos;
         }
     }
@@ -365,7 +368,7 @@ function buscaPosicionMayor(array){
 }
 mensaje+="El número mayor es: "+numeros[buscaPosicionMayor(numeros)]+" y está en la posición "+buscaPosicionMayor(numeros);
 alert(mensaje);
-*/
+
 
 //10.	Hacer una función que devuelva verdad o falso si un número es un término de Fibonacci.
 /*
@@ -594,7 +597,7 @@ Como métodos:
 •	Devolver el número de ingredientes.
 •	Devolver la lista de ingredientes. 
 */
-
+/*
 var base=["Normal","Fina","Roll"];  //Array literal
 var salsa=new Array("Sin","Barbacoa","Tomate","Crema"); //Array denso
 var queso=["Sin","Normal","Extra","Doble"];
@@ -662,4 +665,4 @@ function Pizza(base,salsa,queso,tamaño,oferta,ingredientes){
         });
         return toret;
     };
-}
+}*/
