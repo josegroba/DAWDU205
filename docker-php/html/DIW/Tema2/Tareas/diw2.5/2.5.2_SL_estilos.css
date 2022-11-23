@@ -1,0 +1,49 @@
+body{
+    font-family: arial;
+    background-color: #D0DAEC;
+    margin: 0px;
+}
+h1{
+    color: white;
+    background-color: #102449;
+    margin:0px;
+}
+section{
+    border-left:1px #102449 solid;
+    border-right:1px #102449 solid;
+    width: 40%;
+    float: left;
+    margin-top: 10px;
+}
+#escritorio{
+    margin-left: 6%;
+    margin-right: 3%;
+}
+#internet{
+    margin-left: 3%;
+    margin-right: 6%;
+}
+h2{
+    margin: 0px;
+    color: white;
+    background-color: #102449;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+article{
+    margin: 20px 5% 0px 5%;
+}
+h3{
+    margin: 0px;
+    background-color: limegreen;
+    border-radius: 6px 6px 0px 0px;
+    color: white;
+    padding: 3px;
+}
+p{
+    margin: 0px;
+    background-color: white;
+    border-radius: 0px 0px 6px 6px;
+    padding: 3px;
+}
