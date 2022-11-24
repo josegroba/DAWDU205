@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+@font-face {
+    font-family: "LigatureSymbols";
+    src: url(../fonts/ligature.woff);
+}
+html{
+  display: flex;
+  justify-content: center;
+  font-family: 'Permanent Marker';
+}
+body{
+  padding: 5px;
+  background-color: #9FD4B5;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+}
+
+[class^="icon-"], [class*="icon-"] {
+  font-family: "LigatureSymbols";
+  font-style: normal;
+}
+.icon-fogar::before {
+  content: "\E072";
+}
+
+.icon-galeria:before {
+  content: "\E026";
+}
+
+.icon-normativa::before {
+  content: "\E002";
+}
+
+.icon-equipo::before {
+  content: "\E117";
+}
+
+.icon-guias::before {
+  content: "\E058";
+}
+
+.grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  border-radius: 4px;
+  box-shadow: black 10px 10px 10px;
+}
+.grid-item:hover{
+  filter: saturate(2);
+  height: 102%;
+  width: 102%;
+}
+article {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: minmax(200px, auto);
+  grid-auto-flow: dense;
+  flex-grow: 3;
+  padding: 20px;
+  gap: 20px;
+  background: linear-gradient(#3F5448,#8CBA9F);
+  border-radius: 10px;
+}
+header{
+  display: flex;
+  background-image: url("../imaxes/fondo.jpg");
+  background-size: 100% 100%;
+  height: 200px;
+  width: 100%;
+  border-radius: 20px 20px 0px 0px;
+  color: white;
+  align-items: center;
+  justify-content: space-around;
+
+}
+header h1{
+  font-size: 4em;
+  text-shadow: black 10px 10px 10px;
+}
+section{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap: 20px;
+}
+.menu{
+  width: 150px;
+  background-color: #3F5448;
+  margin:0px;
+  padding: 0px;
+}
+.menu li{
+  display: block;
+  border-bottom: 1px black solid;
+  color: white;
+  text-align: center;
+  padding-top:10px;
+  padding-bottom: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+}.menu a{
+  font-family: 'Permanent Marker';
+  text-decoration: none;
+  color: white;
+}
+.menu li:hover{
+  background-color: #92E0DF;
+  color: #194747;
+  text-shadow: black 0px 0px 6px;
+  font-size: 104%;
+}
+.lateral{
+  display: flex;
+  width: 200px;
+  background-color: #3F5448;
+  padding: 6px;
+  color: white;
+  text-align: center;
+}
+#nombre{
+  font-family: 'Permanent Marker';
+  background-color: #9FD4B5;
+  border: none;
+  border-radius: 5px;
+  height: 35px;
+  margin-top: 15px;
+  width: 85%;
+}
+#contraseña{
+  font-family: 'Permanent Marker';
+  background-color: #9FD4B5;
+  border: none;
+  border-radius: 5px;
+  height: 35px;
+  margin-top: 15px;
+  width: 85%;
+}
+#boton{
+  font-family: 'Permanent Marker';
+  background-color: #92E0DF;
+  border: none;
+  padding: 5px;
+  text-align: center;
+  color: white;
+  font-size: 1.2em;
+  width: 80%;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+#boton:hover{
+  height: 3.5%;
+  width: 90%;
+  box-shadow: 0px 0px 6px rgba(255, 255, 255, 0.664);
+}
+footer{
+  display: flex;
+  height: 100px;
+  background-color: #3F5448;
+  color: white;
+  border-radius: 0px 0px 20px 20px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media screen and (max-width:1024px){
+  header{
+    font-size: 0.75em;
+  }
+  section{
+    flex-direction: column;
+    align-items: center;
+  }
+  .menu{
+    width: 80vw;
+  }
+  .menu li{
+    float: left;
+    width: 5vw;
+    margin-right: 15px;
+    border: none;
+  }
+  .menu li a{
+    font-size: 0px;
+  }
+  article{
+    width: 75vw;
+  }
+  .lateral{
+    width: 75vw;
+  }
+}
+@media screen and (max-width:640px){
+  header{
+    font-size: 0.6em;
+  }
+}
+@media screen and (max-width:340px){
+  header{
+    font-size: 0.4em;
+    width: 100%;
+  }
+  section{
+    width: 100%;
+  }
+  .menu{
+    width: 100%;
+  }
+  article{
+    width: 100%;
+  }
+  .lateral{
+    width: 100%;
+  }
+  footer{
+    width: 100%;
+    flex-wrap: wrap;
+    font-size: 0.5em;
+    height: fit-content;
+  }
+}

@@ -1,0 +1,17 @@
+body{
+    background-color: #444547;
+    color: white;
+    margin: 20px;
+    font-family: 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+}
+h1{
+    border-bottom: 3px white solid;
+}
+h2{
+    text-decoration: none;
+}
+img{
+    color: white;
+    text-decoration: none;
+    background-color: white;
+}
