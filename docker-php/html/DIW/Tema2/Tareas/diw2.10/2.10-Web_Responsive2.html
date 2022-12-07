@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <style>
+      .pageHeader,
+      .mainNav,
+      .siteAds1,
+      .siteAds2,
+      .pageFooter {
+        background-color: rgb(255, 153, 0);
+        border-radius: 5px;
+      }
+      body {
+        display: flex;
+        gap: 5px;
+        align-items: stretch;
+        flex-direction: column;
+      }
+      .pageHeader {
+        width: 100%;
+        height: 9vh; /* 9% de la pantalla (aplica a ancho)
+            text-align: center;
+            padding-top: 15px;*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .mainNav {
+        display: flex;
+        flex-direction: column;
+        min-width: 200px; /* vista actual de la pantalla 20% (aplica a alto)*/
+        padding: 20px 0 20px 20px;
+
+      }
+      .mainArticle {
+        background: url("./imaxes/imaxe.jpg");
+        background-size: cover;
+        padding: 20px;
+        border-radius: 5px;
+      }
+      .siteAds1,
+      .siteAds2 {
+        padding: 10px;
+        height: 50%;
+      }
+      .pageFooter {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        height: 10vh;
+      }
+      section {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        gap: 5px;
+        height: 78vh;
+      }
+      .centro {
+        display: flex;
+        gap: 5px;
+      }
+      aside {
+        width: 35vh;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: 100%;
+      }
+      @media screen and (max-width: 1024px) {
+        .centro {
+          flex-direction: column;
+          justify-content: space-around;
+          
+        }
+
+        aside {
+          flex-direction: row;
+          justify-content: stretch;
+          align-items: stretch;
+          width: 100%;
+          height: 40vh;
+        }
+        aside>form{
+          height: 75vh;
+        }
+        .mainArticle{
+            height: 100%;
+        }
+        .siteAds1,
+        .siteAds2 {
+          padding: 10px;
+          height: 90%;
+        }
+      }
+
+      @media screen and (max-width: 800px) {
+        section{
+            flex-direction: column;
+            justify-content: stretch;
+        }
+        .mainNav{
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        
+        .centro{
+            height: 100vh;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        aside{
+            flex-direction: column;
+        }
+        .mainNav{
+            flex-direction: column;
+        }
+      }
+    </style>
+    <title>Diseño Web Sensible</title>
+  </head>
+  <body>
+    <header class="pageHeader">
+      <h1>Deseño Web Sensible</h1>
+    </header>
+    <section>
+      <nav class="mainNav">
+        <a href="#">Inicio</a>
+        <a href="#">Deseño Web</a>
+        <a href="#">Exemplos</a>
+      </nav>
+      <div class="centro">
+        <article class="mainArticle">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis
+            minima error eum eligendi voluptatem, esse suscipit cum ullam
+            maiores numquam sit itaque, ad dolor, neque vitae corporis modi
+            magnam. Illo!
+          </p>
+        </article>
+
+        <aside>
+          <div class="siteAds1">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quia
+            tempore, earum obcaecati in accusantium est eos ut quas alias
+            eligendi minima, aliquid vitae pariatur fuga maxime explicabo
+            assumenda odio.
+          </div>
+          <div class="siteAds2">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
+            facilis libero fuga vero exercitationem tenetur consequatur nisi nam
+            facere quia voluptate ut aspernatur quod, iusto molestias sapiente
+            necessitatibus. Harum, nihil.
+          </div>
+        </aside>
+      </div>
+    </section>
+    <footer class="pageFooter">
+      <p>Copyright &copy; 2020 IES Mª Aller Ulloa</p>
+      <p>Email: <a href="#">ies.allerulloa@edu.xunta.gal</a></p>
+    </footer>
+  </body>
+</html>
