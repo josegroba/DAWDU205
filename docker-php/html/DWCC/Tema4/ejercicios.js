@@ -24,12 +24,12 @@ XII. Visualizar si el conjunto de sus iniciales (del apartado X) forman una pala
 Si se lee de la misma forma de izquierda a derecha que de derecha a izquierda.
 No se tienen en cuenta los puntos que siguen a cada inicial.
 */
-///////let nombreCompleto=prompt("Introduce tu nombre completo con el formato:"+ '"'+"apellidos,nombre"+'"');
-nombreCompleto="   Gómez   López  ,  Luis   Gabriel    ";
+//var nombreCompleto="   Gómez   López  ,   Luis   Gabriel    ";
 /*  Introducir un nombre completo por teclado con el formato: apellidos, nombre
 El programa debe avisar del posible error encontrado:
 a. Se dejó en blanco el nombre o los apellidos
 b. No hay la coma de separación o a hay más de una.*/
+var nombreCompleto=prompt("Introduce tu nombre completo con el formato:"+ '"'+"apellidos,nombre"+'"');
 function I(nombreCompleto){
     mensaje="I\n";
     let arrayNombre=nombreCompleto.split(',');
@@ -118,7 +118,7 @@ function IX(nombreCompleto){
 /*  X. Visualizar las iniciales seguidas de punto.
 Primero las iniciales del nombre y después las de los apellidos.*/
 function X(nombreCompleto){
-    let mensaje="X\n";
+    let mensaje="";
     let arrayNombre=nombreCompleto.split(",");
     for(let i=(arrayNombre.length-1);i>=0;i--){
         arrayNombre[i]=arrayNombre[i].trim();
@@ -151,11 +151,18 @@ function XI(nombreCompleto){
 Si se lee de la misma forma de izquierda a derecha que de derecha a izquierda.
 No se tienen en cuenta los puntos que siguen a cada inicial.*/
 function XII(iniciales){
-    let inicialesR="";
-    let arrayiniciales=iniciales.split();
-    for(let i=arrayiniciales.length-1;i>=0;i--){
-        iniciales+=arrayiniciales[i];
+    let arrayiniciales=iniciales.split(".");
+    let palindromo=true;
+    arrayiniciales.pop();
+    for(let i=0;i<(arrayiniciales.length/2);i++){
+        if(arrayiniciales[i]!=arrayiniciales[(arrayiniciales.length-1)-i]){
+            palindromo=false;
+        }
     }
-    return inicialesR;
+    return "XII\n"+ palindromo ? "Si":"No";
 }
-alert(XII(X(II(nombreCompleto))));
+//alert(XII(X(II(nombreCompleto))));
+alert(I(nombreCompleto)+"\nII\n"+II(nombreCompleto)+"\n"+III(nombreCompleto)+
+    IV(II(nombreCompleto))+"\n"+V(II(nombreCompleto))+"\n"+VI(II(nombreCompleto))+
+    "\n"+VII(II(nombreCompleto))+"\n"+VIII(II(nombreCompleto))+"\n"+IX(II(nombreCompleto))+
+    "\nX\n"+X(II(nombreCompleto))+"\n"+XI(II(nombreCompleto))+"\n"+XII(X(II(nombreCompleto))));
