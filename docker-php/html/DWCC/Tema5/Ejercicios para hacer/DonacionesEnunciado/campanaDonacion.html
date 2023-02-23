@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<script type="text/javascript" src="InicializarDatos.js"></script>
+		<script type="text/javascript" src="Donante.js"></script>
+		<script type="text/javascript" src="donaciones.js"></script>
+		<link rel="stylesheet" href="misEstilos.css"/>
+		<title>Campaña de donación de sangre</title>
+	</head>
+	<body>
+		<header>
+			<h1>Campaña de donación de sangre</h1>
+			<textarea id="datosGenerales" disabled="disabled" rows="2" cols="100"></textarea>
+			<p></p>
+			<button id="iniciar" hidden>Comenzar las donaciones</button>
+			<p></p>
+		</header>
+		<main>
+			<section id="donantes" hidden>
+				<h4>Datos del donante</h4>
+				<label for="dni">DNI del donante</label>
+				<input type="text" id="dni" title="Escribe el DNI del donante para su comprobación" value="" placeholder="99999999A">
+				<p></p>
+				<button id="comprobarDNI">Comprobar el DNI</button>
+				<p></p>
+				<div id="datosDonante" hidden>
+					<label for="edad">Edad del donante</label>
+					<select id="edad">
+					</select>
+					<p></p>
+					<label for="peso">Peso del donante</label>
+					<select id="peso">			
+					</select>
+					<p></p>	
+					<label for="grupo">Grupo sanguíneo del donante</label>
+					<select id="grupo">						
+					</select>
+					<p></p>	
+					<div>				
+						<label>Sexo del donante</label>
+						<p></p>	
+						<input type="radio" id="M" name="sexo" value="M">
+						<label for="M">Mujer</label>
+						<input type="radio" id="H" name="sexo" value="H">
+						<label for="H">Hombre</label>
+					</div>
+					<p></p>
+					<button id="donar">Realizar donación</button>
+					<p></p>
+				</div>
+			</section>
+			<aside id="donacionesRealizadas" hidden>
+				<div id="lista">
+					<button id="terminar">Terminar donaciones</button>
+					<p></p>
+					<div id="listaDonaciones">
+						<p>Lista de donaciones realizadas</p>
+						
+					</div>
+					<button id="verEstadistica" disabled="disabled" title="Debe dar por finalizadas las donaciones para ver las estadísticas">Ver estadísticas de donaciones realizadas</button>
+					<p></p>
+				</div>
+				<div id="estadistica" hidden>
+					<div id="estadisticaGrupos">
+						<p>Estadística de grupos sanguíneos</p>
+						
+					</div>
+					<p></p>
+					<div id="estadisticaSexos">
+						<p>Estadística de donaciones por sexos</p>
+						
+					</div>
+					<p></p>
+				</div>
+			</aside>
+		</main>
+		<footer>
+			<p>CC-BY-NC Beatriz Eugenia Buyo Pérez 2019</p>
+		</footer>
+	</body>
+</html>

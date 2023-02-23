@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Listas múltiples. Añadir y Borrar</title>
+		<script type="text/javascript" src="Ejercicio1c.js"></script>
+	</head>
+
+	<body>
+		<form id="frutas" name="frutas">
+			<label for="misFrutas">Frutas favoritas</label>
+			<br/>
+			<select id="misFrutas" size="10" multiple="multiple">
+				<option value="Manzana">Manzana</option>
+				<option value="Melón">Melón</option>
+				<option value="Pera">Pera</option>
+				<option value="Plátano">Plátano</option>
+			</select>
+			<br>
+			<label for="nuevaFruta">Nombre de fruta a añadir</label>
+			<input type="text" id="nuevaFruta" name="nuevaFruta" size="50" placeholder="Nombre de la fruta a añadir">
+			<br>
+			<input type="radio" name="operacion" id="añadir" value="añadir">
+			<label for="añadir">Añadir fruta</label>
+			<input type="radio" name="operacion" id="borrar" value="borrar">
+			<label for="borrar">Borrar frutas seleccionadas</label>
+			<br>
+			<button type="button" id="operar" >Ejecutar operación</button>
+		</form>
+	</body>
+</html>

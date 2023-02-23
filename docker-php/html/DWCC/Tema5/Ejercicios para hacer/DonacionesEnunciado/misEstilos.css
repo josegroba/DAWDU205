@@ -1,0 +1,19 @@
+﻿td {
+	width:90px;
+	font-family:verdana serif;
+	border:1px dotted grey;
+	text-align:center;
+}
+
+table{
+	border:2px solid black;
+}
+
+th{
+	width:90px;
+	font-family:verdana serif;
+	font-weight:bolder;
+	background:#b8f8a4;
+	border:1px solid #b8f8a4;
+	text-align:center;
+}

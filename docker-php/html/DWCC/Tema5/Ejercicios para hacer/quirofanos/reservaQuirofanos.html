@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Aplicación de reserva de quirófanos</title>
+        <meta charset="UTF-8">
+        <script src="reservaQuirofanos.js" type="text/javascript"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+		<header><h1>Reserva de quirófanos</h1></header>
+		<main>
+			<section id="entradaDatos">
+				<h2>Entrada de datos de la aplicación de reserva de quirófanos</h2>
+				<label for="nQuirofanos">Número de quirófanos disponibles</label>
+				<input id="nQuirofanos" type="number" min="1" value="1"></input>
+				<label for="nTurnos">Número de turnos de quirófano</label>
+				<input id="nTurnos" type="number" min="1" value="1"></input>
+				<label for="duraccionTurno">Duración del turno</label>
+				<input id="duracionTurno" type="number" min="1" value="1"></input>minutos
+				<label for="comienzoTurno">Comienzo del turno</label>
+				<input id="comienzoTurno" type="time" value="00:00"></input>
+				<h3>Lista de médicos</h3>
+				<select id="listaMedicos">
+					<option value="0">No hay médicos en la lista</option>
+				</select>
+				<label for="nombreMedico">Nombre del médico a añadir</label>
+				<input id="nombreMedico" type="text" size="50" placeholder="Introduce aquí el nombre del médico a añadir" value=""></input>
+				<button id="anadirMedico">Añadir nombre a la lista</button>
+				<button id="hacerReservas" disabled="disabled">Comenzar a hacer reservas</button>
+			</section>
+			<section id="aplicacionReservas" hidden>
+				<h2>Aplicación de reservas de quirófanos</h2>
+				<h3>Lista de médicos</h3>
+				<select id="listaMedicos1">
+				</select>
+				<h3>Lista de turnos (escoge a qué hora comienza la operación)</h3>
+				<select id="listaTurnos">
+				</select>
+				<label for="duracionOperacion">Nº de turnos que dura la operación</label>
+				<input id="nTurnosOperacion" type="number" min="1" value="1"></input>
+				<p id="mensajeDuracion">Ten en cuenta que cada turno dura </p>
+				<button id="hacerReserva">Hacer reservas</button>
+			<section id="listadoReservas" hidden>
+				<h2>Listado de reservas de quirófanos</h2>
+				<div id="reservas"></div>
+			</section>
+		</main>
+		<footer><p>Beatriz Eugenia Buyo Pérez</p</footer>
+    </body>
+</html>

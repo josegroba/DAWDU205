@@ -1,0 +1,76 @@
+/* Custom dropdown */
+
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px;
+}
+
+.custom-dropdown select {
+    background-color: #1abc9c;
+    color: #333;
+    font-size: inherit;
+    padding: .5em;
+    padding-right: 2.5em;
+    border: 0;
+    margin: 0;
+    border-radius: 5px;
+    text-indent: 0.1px;
+    overflow: hidden;
+}
+
+option:link {
+    color: #000;
+    background-color: #aaa;
+}
+
+option:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+option:active {
+    color: #000;
+    background-color: #aaa;
+}
+
+option {
+    color: #fff;
+    background-color: #1abc9c;
+    font-weight: bold;
+}
+
+select option[val="1"] {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.seleccionado {
+    color: #cceeff;
+    background-color: #000044;
+}
+
+.bola1,
+.bola2 {
+    text-align: center;
+    padding-top: 12px;
+    width: 72px;
+    height: 62px;
+    display: block;
+    float: left;
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+.bola1 {
+    background-image: url(bola.png);
+}
+
+.bola2 {
+    background-image: url(BolaEstrella.png);
+}
+
+main, section, aside, footer, div, p{
+	display:block;
+	clear:both;
+}
