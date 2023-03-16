@@ -1,0 +1,332 @@
+/* CSS Document */
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+@font-face {
+    font-family: "LigatureSymbols";
+    src: url(../fonts/ligature.woff);
+}
+
+[class^="icon-"],
+[class*="icon-"] {
+    font-family: "LigatureSymbols";
+    font-style: normal;
+}
+
+.icon-fogar::before {
+    content: "\E072";
+}
+
+.icon-galeria:before {
+    content: "\E026";
+}
+
+.icon-normativa::before {
+    content: "\E002";
+}
+
+.icon-equipo::before {
+    content: "\E117";
+}
+
+.icon-guias::before {
+    content: "\E058";
+}
+
+* {
+    /*box-sizing: border-box;
+    margin: 0;*/
+    font-family: "Permanent Marker", sans-serif;
+
+}
+
+body {
+    width: 80vw;
+    margin: 0px auto;
+    background-color: #9FD4B5;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+    border-radius: 20px 20px 0px 0px;
+    background-image: url('../imaxes/fondo.jpg');
+    background-size: cover;
+    background-position: center 50%;
+    color: white;
+}
+
+header{
+    font-size: 4em;
+    text-shadow: 0px 0px 30px black;
+}
+
+section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 20px;
+}
+
+nav {
+    width: 150px;
+    background-color: #3F5448;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+nav li {
+    list-style: none;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+nav li a {
+    background-color: #3F5448;
+    color: white;
+    text-decoration: none;
+    padding: 10px 0px;
+    display: block;
+}
+
+article {
+
+    background-image: radial-gradient(#3F5448, #8CBA9F);
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: minmax(200px, auto);
+    gap: 20px;
+    padding: 20px;
+    grid-auto-flow: dense;
+    flex-grow: 3;
+
+}
+
+.grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    box-shadow: 0px 0px 10px black;
+
+}
+
+
+
+aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+
+    padding: 6px;
+    background-color: #3F5448;
+    color: white;
+
+}
+
+.inputtext {
+    background-color: #9FD4B5;
+    border: 0;
+    border-radius: 5px;
+    height: 35px;
+    margin-top: 15px;
+    width: 85%;
+}
+
+button {
+    background-color: #92E0DF;
+    border: 0px;
+    padding: 5px;
+    font-size: 1.2em;
+    text-align: center;
+    width: 80%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+    top: 20px;
+    position: relative;
+    padding: 20px;
+    background-color: #3F5448;
+    color: white;
+    margin-bottom: 25px;
+
+    border-radius: 0px 0px 20px 20px;
+
+}
+
+@media (max-width: 1024px) {
+
+    header {
+        font-size: 0.75em;
+    }
+
+    section {
+
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+
+    }
+
+    nav {
+        width: 80vw;
+    }
+
+    nav ul {
+        overflow: hidden;
+
+    }
+
+    nav ul li {
+        float: left;
+        width: 5vw;
+        margin-right: 15px;
+        border-bottom: 0px;
+
+    }
+
+    nav ul li a {
+        display: block;
+        font-size: 0;
+    }
+
+    nav ul li a::before {
+        font-size: 2.125rem;
+    }
+
+    article {
+        width: 75vw;
+    }
+
+    aside {
+        width: 75vw;
+    }
+
+}
+
+@media (max-width: 640px) {
+
+    header {
+        font-size: 0.6em;
+    }
+}
+
+@media (max-width: 360px) {
+    header {
+        font-size: 0.4em;
+    }
+
+    body {
+        align-content: center;
+    }
+
+    footer {
+        flex-wrap: wrap;
+        height: fit-content;
+        font-size: 0.5em;
+    }
+}
+
+.normativa {
+    width: 100%;
+
+    background-color: white;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    position: relative;
+
+
+}
+
+.caja {
+    height: 400px;
+    overflow: hidden;
+}
+
+.normativa p {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+
+
+
+
+
+/* Exercicio 1 */
+header h1{
+    animation-name: exercicio1;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes exercicio1 {
+    0% {text-shadow:0 0 1px yellow,0 0 3px yellow,0 0 6px yellow;}
+    25% {text-shadow:0 0 5px yellow,0 0 15px yellow,0 0 30px yellow;}
+    50% {text-shadow:0 0 10px yellow,0 0 30px yellow,0 0 60px yellow;}
+    75% {text-shadow:0 0 5px yellow,0 0 15px yellow,0 0 30px yellow;}
+    100% {text-shadow:0 0 1px yellow,0 0 3px yellow,0 0 6px yellow;}
+}
+
+/* Exercicio 2 */
+header{
+    animation-name: exercicio2;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+@keyframes exercicio2 {
+    from{background-size: 100%;}
+    to{background-size: 150%;}
+}
+
+/* Exercicio 3 */
+section nav ul li a:hover{
+    background-color:blue;
+    transform:scale(150%);
+    transition: 2s;
+}
+
+/* Exercicio 4 */
+.galeria div:hover{
+    transform: scale(120%);
+    filter: sepia(80%);
+    transition:2s;
+}
+
+/* Exercicio 5 */
+button:hover{
+    background-color: yellow;
+    transform: scale(120%);
+    transition:3s
+}

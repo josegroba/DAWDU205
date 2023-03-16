@@ -11,7 +11,6 @@ function carga(){
         let pos=document.getElementById("aficionesSeleccionadas").options.length;
         for(i=x.length-1;i>=0;i--){
             document.getElementById("aficionesSeleccionadas").add(x[i],pos);
-            alert(pos);
         }
     }
     function pasaTodos(){
