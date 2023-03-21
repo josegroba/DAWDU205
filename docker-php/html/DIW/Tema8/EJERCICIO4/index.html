@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es,en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/miestilo1.css">
+        <link rel="stylesheet" 
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+            crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" 
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+            integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+            crossorigin="anonymous"></script>
+        <title>Tarefa 8.4</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark navbar-expand justify-content-center bg-dark text-light">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="https://www.google.com" class="nav-link active">Google</a></li>
+                <li class="nav-item"><a href="https://www.noticias3d.com" class="nav-link">Noticias</a></li>
+                <li class="nav-item"><a href="https://www.marca.com" class="nav-link">Marca</a></li>
+                <li class="nav-item"><a href="https://www.elchapuzasinformatico.com" class="nav-link">Chapuzas</a></li>
+                <li class="nav-item"><a href="https://www.3djuegos.com" class="nav-link disabled">Juegos</a></li>
+            </ul>
+        </nav>
+        <nav class="mt-5 navbar navbar-dark navbar-expand justify-content-center bg-info text-light">
+            <ul class="navbar-nav">
+                <a class="navbar-brand" href="#">
+                    <img src="images/mcdonalds-logo.webp" width="35px"/>
+                </a>
+                <li class="nav-item"><a href="https://www.google.com" class="nav-link active">Google</a></li>
+                <li class="nav-item"><a href="https://www.noticias3d.com" class="nav-link">Noticias</a></li>
+                <li class="nav-item"><a href="https://www.marca.com" class="nav-link">Marca</a></li>
+                <li class="nav-item"><a href="https://www.elchapuzasinformatico.com" class="nav-link">Chapuzas</a></li>
+                <li class="nav-item"><a href="https://www.3djuegos.com" class="nav-link disabled">Juegos</a></li>
+                <li class="nav-item dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Login</button>
+                    <div class="dropdown-menu">
+                        <form class="form" action="#" method="get">
+                            <input class="form-control " type="text" id="user" placeholder="Usuario"/>
+                            <input class="form-control mt-2" type="password" id="pass" placeholder="Contraseña"/>
+                            <input class="form-check-input mt-2 ml-4" type="checkbox" id="check"/><label class="form-check-label ml-5" for="check">Recordar</label>
+                            <button class="btn btn-success mt-2" type="submit">Aceptar</button>
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline" action="#">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Buscar"/>
+                        <button class="btn btn-success" type="submit">Buscar</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+        
+
+
+
+        <nav class="mt-5 navbar navbar-dark navbar-expand-lg justify-content-center bg-info text-light">
+            <a class="navbar-brand" href="#">
+                <img src="images/mcdonalds-logo.webp" width="35px"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    
+                    <li class="nav-item"><a href="https://www.google.com" class="nav-link active">Google</a></li>
+                    <li class="nav-item"><a href="https://www.noticias3d.com" class="nav-link">Noticias</a></li>
+                    <li class="nav-item"><a href="https://www.marca.com" class="nav-link">Marca</a></li>
+                    <li class="nav-item"><a href="https://www.elchapuzasinformatico.com" class="nav-link">Chapuzas</a></li>
+                    <li class="nav-item"><a href="https://www.3djuegos.com" class="nav-link disabled">Juegos</a></li>
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Login</button>
+                        <div class="dropdown-menu">
+                            <form class="form" action="#" method="get">
+                                <input class="form-control " type="text" id="user" placeholder="Usuario"/>
+                                <input class="form-control mt-2" type="password" id="pass" placeholder="Contraseña"/>
+                                <input class="form-check-input mt-2 ml-4" type="checkbox" id="check"/><label class="form-check-label ml-5" for="check">Recordar</label>
+                                <button class="btn btn-success mt-2" type="submit">Aceptar</button>
+                            </form>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <form class="form-inline" action="#">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Buscar"/>
+                            <button class="btn btn-success" type="submit">Buscar</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+
+    </body>
+</html>
