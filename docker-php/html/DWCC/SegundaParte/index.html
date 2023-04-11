@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Examen práctico 2ª parte</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="estilos.css">
+        <script src="libreria.js" type="text/javascript"></script>
+        <script src="primeraParte.js" type="text/javascript"></script>
+		<script src="codigo.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Predicción de temperaturas</h1>
+        </header>
+        <main>
+            <section>
+                <div id="zonaCiudades">
+                    <label for="ciudades" title="Elige la ciudad para ver su predicción de temperaturas">Ciudades:</label>
+                    <select id="ciudades" title="Elige la ciudad para ver su predicción de temperaturas"></select>
+                </div>
+                <div id="zonaOpciones">
+                    <p>Temperaturas a mostrar:</p>
+                    <input type="checkbox" title="Solo muestra la temperatura máxima y la mínima" id="minMax">
+                    <label for="minMax" title="Muestra la temperatura máxima y la mínima">Mínima y Máxima</label>
+                    <input type="checkbox" title="Muestra la temperatura media" id="media">
+                    <label for="media" title="Muestra la temperatura media">Media</label>
+                    <input type="checkbox" title="Muestra las temperaturas desde las 00:00 hasta las 23:00 horas" id="porHoras">
+                    <label for="porHoras" title="Muestra las temperaturas desde las 00:00 hasta las 23:00 horas" >Todas las horas</label>
+                </div>
+                <div id="zonaModificadores">
+                    <p>¿Cuánta información quieres?</p>
+                    <input type="radio" name="cantidadInfo" title="Muestra las temperaturas de hoy y los próximos 6 días" id="proxDias">
+                    <label for="proxDias" title="Muestra las temperaturas de hoy y los próximos 6 días">Próximos 7 días</label>
+                    <input type="radio" name="cantidadInfo" title="Muestra la temperatura del día que deberás elegir" id="unDia">
+                    <label for="unDia" title="Muestra la temperatura del día que deberás elegir">Elegir un día</label>
+                    <div id="zonaDia" disabled="disabled">
+                        <label for="dias" title="Debes elegir el día de la semana del que quieres mostrar la información">Días de la semana:</label>
+                        <select id="dias" title="Debes elegir el día de la semana del que quieres mostrar la información"></select>
+                    </div>
+                </div>
+            </section>
+            <aside>
+                <div id="infoMinMax" hidden="hidden">
+                </div>
+                <div id="infoMedia" hidden="hidden">
+                </div>
+                <div id="infoDia" hidden="hidden">
+                </div>
+            </aside>
+        </main>
+        <footer>
+            <p>Copywrite 2023</p>
+        </footer>
+    </body>
+</html>

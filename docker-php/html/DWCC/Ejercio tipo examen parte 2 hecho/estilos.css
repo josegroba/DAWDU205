@@ -1,0 +1,65 @@
+*{
+	font-size:20px;
+}
+
+header,main,footer{
+	display:block;
+    margin:0 auto;
+}
+
+label,select{
+	display:block;
+}
+
+div{
+    float:left;
+    margin:15px;
+}
+
+.capitan{
+	background-color:yellow;
+}
+
+table{
+	border:2px solid black;
+	width:600px;
+	margin:20px auto;
+}
+
+td{
+	border:1px dotted grey;
+    text-align:center;
+}
+
+td:nth-child(1){
+	width:250px;
+}
+
+td:nth-child(2){
+	text-align:center;
+}
+
+th{
+    text-justify: none;
+}
+
+#equiposFormados{
+	margin:20px auto;
+}
+
+p{
+    float:none;
+}
+
+#info{
+    width:400px;
+    background-color:silver;
+}
+
+footer{
+    clear:both;
+    width:100%;
+}
+select{
+    width:300px;
+}
