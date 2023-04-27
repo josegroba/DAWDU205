@@ -1,23 +1,17 @@
 <?php
 
 class Usuario{
-    private static $num_usuarios=0;
-    private $id_usuario;
-    private $nombre;
-    private $correo;
-    private $password;
-    private $rol;
 
-    public function __construct($nombre="",$correo="",$pass="",$rol="",$encriptar=false){
-        $this->num_usuarios=$this->num_usuarios + 1;
-        $this->id_usuario=$this->num_usuarios;
-        $this->nombre=$nombre;
-        $this->correo=$correo;
-        $this->rol=$rol;
+    public function __construct(
+        private $idUsuario=null,
+        private $nombre=null,
+        private $correo=null,
+        private $rol=0,
+        private $password=null,
+        $encriptar=false
+    ){
         if ($encriptar) {
-            $this->password = password_hash($pass, PASSWORD_DEFAULT);
-        } else {
-            $this->password = $pass;
+            $this->password = password_hash($password, PASSWORD_DEFAULT);
         }
     }
 

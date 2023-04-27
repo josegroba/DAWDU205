@@ -35,4 +35,4 @@ foreach ($eventos as $evento) { ?>
 $html = ob_get_contents();
 ob_clean();
 return $html;
-}
+} ?>
