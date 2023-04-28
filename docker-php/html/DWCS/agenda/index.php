@@ -1,82 +1,91 @@
 <?php
+require_once(dirname(__FILE__)."/modelo/Usuario.php");
 require_once(dirname(__FILE__)."/controller/Eventos.php");
+require_once(dirname(__FILE__)."/vista/cabecera.php");
+require_once(dirname(__FILE__)."/vista/listadoEventos.php");
+require_once(dirname(__FILE__)."/vista/pie.php");
 $a=new Eventos();
 $eventos=$a->Listar();
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda</title>
-</head>
-<body><!--
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.php">Agenda</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+if(session_status()===PHP_SESSION_ACTIVE){
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Eventos
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="?accion=listar&tipo=evento">Listado de Eventos</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="?accion=nuevo&tipo=evento">Nuevo Evento</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Usuarios
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="?accion=listar&tipo=usuario">Listado de Usuarios</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="?accion=nuevo&tipo=usuario">Nuevo Usuario</a>
-            </div>
-        </li>
-            <li><a class="nav-link" href="?accion=cerrar">Cerrar Sesión</a></li>
-        </ul>
-    </div>
-    </nav>-->
-    <!--------------------------------------------------------------------------->
-   
+}else{
+    session_start();
+}
+
+$secretUser = new Usuario(0,"Luis","luis@test.com",1,"12345",true);
+$contenido ="";
+try {/*
+  //Validar usuario
+  if ($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["correo"])&& isset($_POST["password"])) {
+   if (!$secretUser->comprobarValidarUsuario($_POST["correo"],$_POST["password"])) {
+     throw new Exception("Acceso denegado");
+   } else {
+      UsuarioSession::createUsuarioSession($secretUser);
+      
+   }
+  }
+  $usuario = UsuarioSession::getUsuarioSession();   */
+  //Usuario validado
+  $accion = null;
+  $id_evento = null;
+  if ($_SERVER["REQUEST_METHOD"]== "GET" && isset($_GET['accion'])) {
+    $accion = $_GET['accion'];
+    if (isset($_GET['id_evento'])) {
+      $id_evento = $_GET['id_evento'];
+      
+      
+    }
+    switch ($accion) {
+      case 'cerrar': UsuarioSession::closeSession();          
+            break;
+      case 'eliminar': 
+        Eventos::Eliminar($id_evento);
+        $accion = "listarEventos";
+        break;
+    }
+
+
+  }
+
+  switch ($accion) {
+    case 'cerrar':
+      $contenido = getLogin();
+      break;
+    case 'listar':
+      $eventos = Eventos::listar();
+      $contenido = ListadoEventos($eventos);
+      break;
+    case 'nuevo':
+      break;
     
-<h2>Listado de eventos</h2>
-<table class="table  table-bordered">
-<thead class="thead-dark">
-<tr >
-    <th scope="col">Nombre</th>
-    <th scope="col">Fecha incio</th>
-    <th scope="col">Fecha fin</th>
-    <th scope="col">Acciones</th>
-</tr>
-</thead>
-<tbody>
+    default:
+            $eventos = Eventos::listar();
+            $contenido = ListadoEventos($eventos);
+
+  }
+} catch(LoginException $e) { 
+   $contenido = getLogin($e->getMessage());
+}
+catch(Exception $e) { 
+    $contenido = "Otro error".$e->getMessage();
+  }
+
+?>
+<?=getCabecera()?>
+<?=$contenido?>
+<?php
+/*
+  $date = new DateTime();
+  $result = $date->format('d-m-Y H:i');
+  echo "fecha:".$result.'<input type="datetime-local">';
+  */
+?>
+<?=getPie()?>
 <?php 
-$formato = 'Y-m-d H:i:s';
-foreach ($eventos as $evento) { ?>
-    <tr>
-        <td><?=$evento->getNombre()?></td>
-        <td><?=$evento->getFechaInicio()->format($formato)?></td>
-        <td><?=$evento->getFechaFin()->format($formato)?></td>
-        <td>
-        <a href="?accion=modificar&id_evento=<?=$evento->getIdEvento()?>" class="btn btn-primary btn-sm " role="button" aria-pressed="true">Modificar</a>
-        <a href="?accion=eliminar&id_evento=<?=$evento->getIdEvento()?>" class="btn btn-danger btn-sm " role="button" aria-pressed="true"
-        onclick="if (confirm('Estas seguro?')){ return true; } else {return false;}">Eliminar</a> 
-    
-         </td>
-    </tr>
-<?php }
+if(isset($_SESSION["eventos"])){
+    echo(count($_SESSION["eventos"]));
+
+}else{
+    echo("no");
+}
 ?>
-<tbody>
-</table>
-
-
-</body>
-</html>
