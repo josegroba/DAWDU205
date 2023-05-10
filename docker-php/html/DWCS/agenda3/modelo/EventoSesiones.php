@@ -4,7 +4,11 @@ class EventoSessiones extends Evento {
     
     function guardar(){
         if  (isset($_SESSION["eventos"]) && is_null($this->id_evento)) {
-           $max =  max(array_keys($_SESSION["eventos"]));
+            if(count($_SESSION['eventos'])==0){
+                $max=0;
+            }else{
+                $max =  max(array_keys($_SESSION["eventos"]));
+            }
            $this->setIdEvento($max+1);
         }else{
             if (is_null($this->id_evento)) {

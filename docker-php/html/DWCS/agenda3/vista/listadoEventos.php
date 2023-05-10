@@ -21,11 +21,7 @@ foreach ($eventos as $evento) { ?>
         <td><?=$evento->getFechaInicio()->format($formato)?></td>
         <td><?=$evento->getFechaFin()->format($formato)?></td>
         <td>
-        <a href="?accion=modificar
-                &id_evento=<?=$evento->getIdEvento()?>
-                &nombre=<?=$evento->getIdEvento()?>
-                &fecha_inicio=<?=$evento->getIdEvento()?>
-                &fecha_fin=<?=$evento->getIdEvento()?>" class="btn btn-primary btn-sm " role="button" aria-pressed="true">Modificar</a>
+        <a href="?accion=modificar&id_evento=<?=$evento->getIdEvento()?>&nombre=<?=$evento->getNombre()?>&fecha_inicio=<?=$evento->getFechaInicio()->format($formato)?>&fecha_fin=<?=$evento->getFechaFin()->format($formato)?>" class="btn btn-primary btn-sm " role="button" aria-pressed="true">Modificar</a>
         <a href="?accion=eliminar&id_evento=<?=$evento->getIdEvento()?>" class="btn btn-danger btn-sm " role="button" aria-pressed="true"
         onclick="if (confirm('Estas seguro?')){ return true; } else {return false;}">Eliminar</a> 
     

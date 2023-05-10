@@ -5,14 +5,13 @@ require_once(dirname(__FILE__)."/vista/cabecera.php");
 require_once(dirname(__FILE__)."/vista/listadoEventos.php");
 require_once(dirname(__FILE__)."/vista/pie.php");
 require_once(dirname(__FILE__)."/vista/formEventos.php");
-$a=new Eventos();
-$eventos=$a->Listar();
+$eventos=Eventos::Listar();
 if(session_status()===PHP_SESSION_ACTIVE){
 
 }else{
   session_start();
 }
-Eventos::guardar(null,1,"prueba13");
+//Eventos::guardar(null,1,"prueba13");
 $secretUser = new Usuario(0,"Luis","luis@test.com",1,"12345",true);
 $contenido ="";
 try {/*
@@ -47,9 +46,9 @@ try {/*
         $accion = "listar";
         break;
       case 'modificar':
-        $nombre_evento=$_GET['nombre_evento'];
-        $fecha_inicio=$_GET['fecha_inicio'];
-        $fecha_fin=$_GET['fecha_fin'];
+        $nombre_evento=$_GET['nombre'];
+        $fecha_inicio=new DateTime($_GET['fecha_inicio']);
+        $fecha_fin=new DateTime($_GET['fecha_fin']);
         $evento=new EventoSessiones($id_evento,1,$nombre_evento,$fecha_inicio,$fecha_fin);
         
         getFormEventos($evento);
@@ -64,12 +63,13 @@ try {/*
       $nombre_evento = $_POST["nombre"];
     }
     if(isset($_POST["fecha_inicio"])){
-      $fecha_inicio = $_POST["fecha_inicio"];
+      echo($_POST["fecha_inicio"]);
+      $fecha_inicio = new DateTime($_POST["fecha_inicio"]);
     }
     if(isset($_POST["fecha_fin"])){
-      $fecha_fin = $_POST["fecha_fin"];
+      $fecha_fin = new DateTime($_POST["fecha_fin"]);
     }
-    Eventos::guardar($id_evento,1,$nombre_evento,$fecha_inicio!=null? $fecha_inicio: null,$fecha_fin!=null? $fecha_fin:null);
+    Eventos::guardar($id_evento==null? null:$id_evento,1,$nombre_evento,$fecha_inicio!=null? $fecha_inicio: null,$fecha_fin!=null? $fecha_fin:null);
     $accion="listar";
   }
 
