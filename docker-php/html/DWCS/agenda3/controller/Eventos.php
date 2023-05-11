@@ -1,5 +1,6 @@
 <?php
 require_once(dirname(__FILE__)."/../modelo/EventoSesiones.php");
+require_once(dirname(__FILE__)."/../modelo/EventoMySql.php");
 class Eventos{
     private $tipoAplicacion="sesiones";
     private static function getEventos() {
@@ -12,11 +13,16 @@ class Eventos{
         $evento->guardar();
     }
     static function Listar() {
-        return EventoSessiones::listar();
+        //return EventoSessiones::listar();
+        return EventoMySql::listar();
     }
 
     static function Eliminar($id) {
         EventoSessiones::eliminar($id);
+    }
+
+    static function getById($id){
+        return EventoSessiones::getById($id);
     }
 }
 ?>

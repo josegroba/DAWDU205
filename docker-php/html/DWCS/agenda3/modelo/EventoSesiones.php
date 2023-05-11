@@ -35,6 +35,11 @@ class EventoSessiones extends Evento {
         unset($_SESSION["eventos"][$id]);
     }
 
+    static function getById($id){
+        if(isset($_SESSION["eventos"][$id])){
+            return unserialize($_SESSION["eventos"][$id]);
+        }
+    }
 
     function __serialize(): array
     {

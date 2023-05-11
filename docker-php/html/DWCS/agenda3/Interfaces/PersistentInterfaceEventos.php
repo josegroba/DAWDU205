@@ -8,4 +8,5 @@ interface PersistentInterfaceEventos{
     function modificar();
     static function listar();
     static function eliminar($id);
+    static function getById($id);
 }

@@ -5,12 +5,12 @@ require_once(dirname(__FILE__)."/vista/cabecera.php");
 require_once(dirname(__FILE__)."/vista/listadoEventos.php");
 require_once(dirname(__FILE__)."/vista/pie.php");
 require_once(dirname(__FILE__)."/vista/formEventos.php");
-$eventos=Eventos::Listar();
 if(session_status()===PHP_SESSION_ACTIVE){
 
 }else{
   session_start();
 }
+$eventos=Eventos::Listar();
 //Eventos::guardar(null,1,"prueba13");
 $secretUser = new Usuario(0,"Luis","luis@test.com",1,"12345",true);
 $contenido ="";
@@ -37,24 +37,8 @@ try {/*
       $id_evento = $_GET['id_evento'];
     }
     
-
-    switch ($accion) {
-      case 'cerrar': UsuarioSession::closeSession();          
-            break;
-      case 'eliminar': 
-        Eventos::Eliminar($id_evento);
-        $accion = "listar";
-        break;
-      case 'modificar':
-        $nombre_evento=$_GET['nombre'];
-        $fecha_inicio=new DateTime($_GET['fecha_inicio']);
-        $fecha_fin=new DateTime($_GET['fecha_fin']);
-        $evento=new EventoSessiones($id_evento,1,$nombre_evento,$fecha_inicio,$fecha_fin);
-        
-        getFormEventos($evento);
-        break;
-    }
   }
+
   if ($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["accion"]) && $_POST["accion"]=="guardar") {
     if(isset($_POST["id_evento"])){
       $id_evento = $_POST["id_evento"];
@@ -84,8 +68,17 @@ try {/*
     case 'nuevo':
       $contenido=getFormEventos();
       break;
+      case 'cerrar': UsuarioSession::closeSession();          
+            break;
+      case 'eliminar': 
+        Eventos::Eliminar($id_evento);
+        $accion = "listar";
+        break;
+      case 'modificar':
+        $contenido = getFormEventos(Eventos::getById($id_evento));
+        break;      
     default:
-            $eventos = Eventos::listar();
+           $eventos = Eventos::listar();
             $contenido = ListadoEventos($eventos);
 
   }

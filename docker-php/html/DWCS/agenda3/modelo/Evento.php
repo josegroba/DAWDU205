@@ -10,16 +10,22 @@ abstract class Evento implements PersistentInterfaceEventos{
                     protected $nombre=null,
                     protected ?DateTime $fecha_inicio=null,
                     protected ?DateTime $fecha_fin=null ){
-        if($id_usuario==null){
+        if($this->id_usuario==null){
             throw new Exception("El evento necesita un usuario asignado");
         }
+
+        
+
         if($fecha_inicio==null){
             $this->fecha_inicio = new DateTime();
         }
+
+
         if ($this->fecha_fin == null) {
             $this->fecha_fin = clone $this->fecha_inicio;
             $this->fecha_fin->modify('+ 1 hour');
         }
+
     }
 
     public function getIdEvento(){
@@ -59,6 +65,6 @@ abstract class Evento implements PersistentInterfaceEventos{
     abstract function modificar();
     abstract static function listar();
     abstract static function eliminar($id);
-
+    abstract static function getById($id);
 
 }
