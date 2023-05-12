@@ -9,20 +9,43 @@ class Eventos{
         return self::$eventos;*/
     }
     static function guardar($id_evento,$id_usuario,$nombre,$fecha_inicio=null,$fecha_fin=null){
+        /*
         $evento=new EventoSessiones($id_evento,$id_usuario,$nombre,$fecha_inicio,$fecha_fin);
         $evento->guardar();
+        */
+        /*
+        $evento=new EventoMySql($id_evento,$id_usuario,$nombre,$fecha_inicio,$fecha_fin);
+        $evento->guardar();
+        */
     }
     static function Listar() {
-        //return EventoSessiones::listar();
+        /*
+        return EventoSessiones::listar();
+        */
+        /*
         return EventoMySql::listar();
+        */
+
+        return EventoMongo::listar();
+
     }
 
     static function Eliminar($id) {
+        /*
         EventoSessiones::eliminar($id);
+        */
+        /*
+        EventoMySql::eliminar($id);
+        */
     }
 
     static function getById($id){
+        /*
         return EventoSessiones::getById($id);
+        */
+        /*
+        return EventoMySql::getById($id);
+        */
     }
 }
 ?>

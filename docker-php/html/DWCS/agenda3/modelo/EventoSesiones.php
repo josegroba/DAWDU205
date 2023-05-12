@@ -17,9 +17,9 @@ class EventoSessiones extends Evento {
         }
         $_SESSION["eventos"][$this->id_evento]=serialize($this);
     }
-    function modificar(){
+    /*function modificar(){
         $this->guardar();
-    }
+    }*/
 
     static function listar(){
         $eventos = [];

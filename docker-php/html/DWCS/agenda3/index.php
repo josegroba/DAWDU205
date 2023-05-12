@@ -61,6 +61,9 @@ try {/*
     case 'cerrar':
       $contenido = getLogin();
       break;
+    case 'eliminar': 
+      Eventos::Eliminar($id_evento);
+      $accion = "listar";
     case 'listar':
       $eventos = Eventos::listar();
       $contenido = ListadoEventos($eventos);
@@ -70,10 +73,6 @@ try {/*
       break;
       case 'cerrar': UsuarioSession::closeSession();          
             break;
-      case 'eliminar': 
-        Eventos::Eliminar($id_evento);
-        $accion = "listar";
-        break;
       case 'modificar':
         $contenido = getFormEventos(Eventos::getById($id_evento));
         break;      
@@ -96,7 +95,7 @@ catch(Exception $e) {
 <?php
 /*
   $date = new DateTime();
-  $result = $date->format('d-m-Y H:i');
+  $result = $date->format('d-m-Y H:i:s');
   echo "fecha:".$result.'<input type="datetime-local">';
   */
 ?>

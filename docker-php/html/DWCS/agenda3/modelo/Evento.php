@@ -62,7 +62,6 @@ abstract class Evento implements PersistentInterfaceEventos{
 
     
     abstract function guardar();
-    abstract function modificar();
     abstract static function listar();
     abstract static function eliminar($id);
     abstract static function getById($id);

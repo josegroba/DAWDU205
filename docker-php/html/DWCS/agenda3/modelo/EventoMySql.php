@@ -4,33 +4,50 @@ require_once(dirname(__FILE__)."/../BD/BDMySql.php");
 class EventoMySql extends Evento {
     
     function guardar(){
-        
-    }
-    function modificar(){
-        $this->guardar();
+        $BD = BD::getConexion();
+        $stmt = $BD->prepare("REPLACE into evento(id_evento,id_usuario,nombre,fecha_inicio,fecha_fin) 
+                                VALUES (:id_evento, :id_usuario, :nombre, :fecha_inicio, :fecha_fin)
+                            ");
+        $stmt->execute([":id_evento"=>$this->getIdEvento(),
+                        ":id_usuario"=>$this->getIdUsuario(),
+                        ":nombre" => $this->getNombre(),
+                        ":fecha_inicio" => $this->getFechaInicio()->format('Y-m-d H:i:s'),
+                        ":fecha_fin" => $this->getFechaFin()->format('Y-m-d H:i:s')
+                        ]);   
     }
 
     static function listar(){
         $BD = BD::getConexion();
         $stmt = $BD->prepare("SELECT * FROM evento");
         $stmt->execute();
-        if(is_array($stmt)){
-            echo "si";
-        }else{
-            echo "no";
-        }
-        //echo($stmt["nombre"]);
         $eventos=[];
         foreach($stmt->fetchAll() as $evento){
-            $eventos[$evento["id_evento"]]=new EventoMySql($evento["id_evento"],$evento["id_usua"]);
+            $id_evento =$evento["id_evento"];
+            $id_usuario=$evento["id_usuario"];
+            $nombre=$evento["nombre"];
+            $fecha_inicio=new DateTime($evento["fecha_inicio"]);
+            $fecha_fin=new DateTime($evento["fecha_fin"]);
+            $eventos[$evento["id_evento"]]=new EventoMySql($id_evento,$id_usuario,$nombre,$fecha_inicio,$fecha_fin);
         }
         return $eventos;
     }
     static function eliminar($id){
-        
+        $BD = BD::getConexion();
+        $stmt = $BD->prepare("DELETE FROM evento where id_evento = :id");
+        $stmt->execute([":id"=>$id]);
     }
 
     static function getById($id){
-        
+        $BD = BD::getConexion();
+        $stmt = $BD->prepare("SELECT * FROM evento where id_evento = :id");
+        $stmt->execute([":id"=>$id]);
+        $datos = $stmt->fetch();
+        $id_evento =$datos["id_evento"];
+        $id_usuario=$datos["id_usuario"];
+        $nombre=$datos["nombre"];
+        $fecha_inicio=new DateTime($datos["fecha_inicio"]);
+        $fecha_fin=new DateTime($datos["fecha_fin"]);
+        $evento=new EventoMySql($id_evento,$id_usuario,$nombre,$fecha_inicio,$fecha_fin);
+        return $evento;
     }
 }
