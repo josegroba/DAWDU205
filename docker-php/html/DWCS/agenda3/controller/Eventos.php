@@ -1,6 +1,7 @@
 <?php
 require_once(dirname(__FILE__)."/../modelo/EventoSesiones.php");
 require_once(dirname(__FILE__)."/../modelo/EventoMySql.php");
+require_once(dirname(__FILE__)."/../modelo/EventoMongo.php");
 class Eventos{
     private $tipoAplicacion="sesiones";
     private static function getEventos() {
@@ -17,6 +18,11 @@ class Eventos{
         $evento=new EventoMySql($id_evento,$id_usuario,$nombre,$fecha_inicio,$fecha_fin);
         $evento->guardar();
         */
+        ///*
+        $evento=new EventoMongo($id_evento,$id_usuario,$nombre,$fecha_inicio,$fecha_fin);
+        //var_dump($evento);
+        $evento->guardar();
+        //*/
     }
     static function Listar() {
         /*
@@ -46,6 +52,9 @@ class Eventos{
         /*
         return EventoMySql::getById($id);
         */
+        //*
+        return EventoMongo::getById($id);
+        //*/
     }
 }
 ?>

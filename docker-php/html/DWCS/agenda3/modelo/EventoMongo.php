@@ -1,19 +1,29 @@
 <?php
 require_once(dirname(__FILE__)."/../modelo/Evento.php");
 require_once(dirname(__FILE__)."/../BD/BDMongo.php");
-class EventoMongo extends Evento {
+class EventoMongo extends Evento implements MongoDB\BSON\Persistable{
     
     function guardar(){
-         
+        if (!isset($this->id_evento)) {
+            $res = BDMongo::getConexion()->Evento->insertOne($this);
+            $this->id_evento =  $res->getInsertedId();
+        } else {
+            BDMongo::getConexion()->EjercicioEventos->updateOne(
+                [ "_id" => new MongoDB\BSON\ObjectID($this->id_evento) ],
+                [ '$set' =>  $this]);
+        }
     }
 
     static function listar(){
-        //Bd::getConexion();
-        /*
-        $cursor = BD::getConexion()->eventos->find();
-        $cursor->setTypeMap(['root' => Contacto::getClass()]);
-        $eventos = $cursor->toArray(); 
-        return $eventos;*/
+        $eventos = [];
+        BdMongo::getConexion();
+        $cursor = BDMongo::getConexion()->Evento->find();
+        $cursor->setTypeMap(['root' => EventoMongo::class]);
+        $evs = $cursor->toArray(); 
+        foreach($evs as $evento){
+            $eventos[(String)$evento->id_evento]=$evento;
+        }
+        return $eventos;
     }
     static function eliminar($id){
         $BD = BD::getConexion();
@@ -22,16 +32,39 @@ class EventoMongo extends Evento {
     }
 
     static function getById($id){
-        $BD = BD::getConexion();
-        $stmt = $BD->prepare("SELECT * FROM evento where id_evento = :id");
-        $stmt->execute([":id"=>$id]);
-        $datos = $stmt->fetch();
-        $id_evento =$datos["id_evento"];
-        $id_usuario=$datos["id_usuario"];
-        $nombre=$datos["nombre"];
-        $fecha_inicio=new DateTime($datos["fecha_inicio"]);
-        $fecha_fin=new DateTime($datos["fecha_fin"]);
-        $evento=new EventoMySql($id_evento,$id_usuario,$nombre,$fecha_inicio,$fecha_fin);
-        return $evento;
+        return  BDMongo::getConexion()->Evento->findOne( 
+            [ "_id" => new MongoDB\BSON\ObjectID($id) ],
+           ['typeMap'=>['root' => EventoMongo::class]]);
     }
+
+    function bsonUnserialize(array  $data): void
+    {
+    //$this->nombre = $data["nombre"];
+      foreach ($data as $key => $value) {
+          switch ($key) {
+              case '_id': $this->id_evento = $value; break;
+              case 'fecha_inicio':
+                $this->fecha_inicio =new DateTime($value);
+                break;
+              case 'fecha_fin':
+                $this->fecha_fin =new DateTime($value);
+                break;
+              default: $this->$key = $value; break;
+          }
+      }
+   }
+   public function bsonSerialize(): array
+   {
+
+       //$array = (array) $this;
+       $array = ["id_usuario"=>$this->getIdUsuario(),
+                 "nombre"=>$this->getNombre(),
+                 "fecha_inicio"=>$this->getFechaInicio()->format('Y-m-d H:i:s'),
+                 "fecha_fin"=>$this->getFechaFin()->format('Y-m-d H:i:s')];
+       if (isset( $this->id_evento)) {
+        $array['_id'] = new MongoDB\BSON\ObjectID($this->id_evento);
+       }
+       unset($array['id_evento']);
+       return $array;
+   }
 }
