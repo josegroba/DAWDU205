@@ -3,28 +3,33 @@ require_once(dirname(__FILE__)."/modelo/Usuario.php");
 require_once(dirname(__FILE__)."/controller/Eventos.php");
 require_once(dirname(__FILE__)."/vista/cabecera.php");
 require_once(dirname(__FILE__)."/vista/listadoEventos.php");
+require_once(dirname(__FILE__)."/vista/listadoUsuarios.php");
 require_once(dirname(__FILE__)."/vista/pie.php");
 require_once(dirname(__FILE__)."/vista/formEventos.php");
+require_once(dirname(__FILE__)."/vista/formUsuarios.php");
+require_once(dirname(__FILE__)."/vista/login.php");
+require_once(dirname(__FILE__)."/session/Sesiones.php");
 if(session_status()===PHP_SESSION_ACTIVE){
 
 }else{
   session_start();
 }
 $eventos=Eventos::Listar();
-//Eventos::guardar(null,1,"prueba13");
-$secretUser = new Usuario(0,"Luis","luis@test.com",1,"12345",true);
+$secretUser = new Usuario(0,"Luis","luis@test.com",1,Usuario::hashPassword("12345"));
+
 $contenido ="";
-try {/*
+try {
   //Validar usuario
   if ($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["correo"])&& isset($_POST["password"])) {
    if (!$secretUser->comprobarValidarUsuario($_POST["correo"],$_POST["password"])) {
      throw new Exception("Acceso denegado");
    } else {
-      UsuarioSession::createUsuarioSession($secretUser);
+      Sesiones::createSesiones($secretUser);
       
    }
   }
-  $usuario = UsuarioSession::getUsuarioSession();   */
+ 
+  $usuario = Sesiones::getSesiones(); //*/
   //Usuario validado
   $accion = null;
   $id_evento = null;
@@ -47,11 +52,13 @@ try {/*
       $nombre_evento = $_POST["nombre"];
     }
     if(isset($_POST["fecha_inicio"])){
-      echo($_POST["fecha_inicio"]);
       $fecha_inicio = new DateTime($_POST["fecha_inicio"]);
     }
     if(isset($_POST["fecha_fin"])){
       $fecha_fin = new DateTime($_POST["fecha_fin"]);
+    }
+    if($_POST["fecha_inicio"]==$_POST["fecha_fin"]){
+      $fecha_fin=null;
     }
     Eventos::guardar($id_evento==null? null:$id_evento,1,$nombre_evento,$fecha_inicio!=null? $fecha_inicio: null,$fecha_fin!=null? $fecha_fin:null);
     $accion="listar";
@@ -71,9 +78,12 @@ try {/*
     case 'nuevo':
       $contenido=getFormEventos();
       break;
-      case 'cerrar': UsuarioSession::closeSession();          
+    case 'nuevoUsuario':
+        $contenido=getFormUsuarios(1);
+        break;
+    case 'cerrar': Sesiones::closeSession();          
             break;
-      case 'modificar':
+    case 'modificar':
         $contenido = getFormEventos(Eventos::getById($id_evento));
         break;      
     default:

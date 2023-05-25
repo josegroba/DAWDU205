@@ -8,7 +8,7 @@ class EventoMongo extends Evento implements MongoDB\BSON\Persistable{
             $res = BDMongo::getConexion()->Evento->insertOne($this);
             $this->id_evento =  $res->getInsertedId();
         } else {
-            BDMongo::getConexion()->EjercicioEventos->updateOne(
+            BDMongo::getConexion()->Evento->updateOne(
                 [ "_id" => new MongoDB\BSON\ObjectID($this->id_evento) ],
                 [ '$set' =>  $this]);
         }
@@ -26,9 +26,9 @@ class EventoMongo extends Evento implements MongoDB\BSON\Persistable{
         return $eventos;
     }
     static function eliminar($id){
-        $BD = BD::getConexion();
-        $stmt = $BD->prepare("DELETE FROM evento where id_evento = :id");
-        $stmt->execute([":id"=>$id]);
+        BDMongo::getConexion()->Evento->deleteOne(
+            [ "_id" => new MongoDB\BSON\ObjectID($id) ]
+           );
     }
 
     static function getById($id){

@@ -3,16 +3,20 @@
 class Usuario{
 
     public function __construct(
-        private $idUsuario=null,
-        private $nombre=null,
-        private $correo=null,
-        private $rol=0,
-        private $password=null,
-        $encriptar=false
+        protected $id_usuario=null,
+        protected $nombre=null,
+        protected $correo=null,
+        protected $rol=0,
+        protected $password=null
     ){
-        if ($encriptar) {
-            $this->password = password_hash($password, PASSWORD_DEFAULT);
-        }
+       /* if (!is_null($this->password)) {
+              $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+         }*/
+       // echo $this->password;
+    }
+
+    public function comprobarValidarUsuario($correo, $contraseña) {
+        return  $correo == $this->correo && password_verify($contraseña,$this->password);
     }
 
     public function getId(){
@@ -40,12 +44,16 @@ class Usuario{
     public function setCorreo($correo){
         $this->correo= $correo;
     }
-    public function setPassword($pass,$encriptar=null){
+    public function setPassword($pass,$encriptar=true){
         if ($encriptar) {
-            $this->password = password_hash($pass, PASSWORD_DEFAULT);
+            $this->password =  self::hashPassword($pass);  // password_hash($pass, PASSWORD_DEFAULT);
         } else {
             $this->password = $pass;
         }
+    }
+
+    public static function hashPassword($pass) {
+        return password_hash($pass, PASSWORD_DEFAULT);
     }
     public function setRol($rol){
         $this->rol=$rol;

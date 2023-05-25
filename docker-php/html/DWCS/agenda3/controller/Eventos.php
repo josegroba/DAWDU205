@@ -20,7 +20,6 @@ class Eventos{
         */
         ///*
         $evento=new EventoMongo($id_evento,$id_usuario,$nombre,$fecha_inicio,$fecha_fin);
-        //var_dump($evento);
         $evento->guardar();
         //*/
     }
@@ -43,15 +42,18 @@ class Eventos{
         /*
         EventoMySql::eliminar($id);
         */
+        //*
+        EventoMongo::eliminar($id);
+        //*/
     }
 
     static function getById($id){
         /*
         return EventoSessiones::getById($id);
-        */
+        //*/
         /*
         return EventoMySql::getById($id);
-        */
+        //*/
         //*
         return EventoMongo::getById($id);
         //*/
