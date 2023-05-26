@@ -1,6 +1,7 @@
 <?php
 require_once(dirname(__FILE__)."/../modelo/Evento.php");
-class EventoSessiones extends Evento {
+require_once(dirname(__FILE__)."/../session/Sesiones.php");
+class EventoSesiones extends Evento {
     
     function guardar(){
         if  (isset($_SESSION["eventos"]) && is_null($this->id_evento)) {
@@ -15,18 +16,19 @@ class EventoSessiones extends Evento {
                 $this->id_evento=1;
             }
         }
+        var_dump($this);
         $_SESSION["eventos"][$this->id_evento]=serialize($this);
     }
-    /*function modificar(){
-        $this->guardar();
-    }*/
 
     static function listar(){
+        $usuario=Sesiones::getSesiones();
         $eventos = [];
         if(isset($_SESSION["eventos"])){
             foreach ($_SESSION["eventos"] as $evento) {
                 $e = unserialize($evento);
-                $eventos[$e->id_evento] = $e;
+                if($usuario->getId()==$e->getIdUsuario()){
+                    $eventos[$e->id_evento] = $e;
+                }
             }     
         }
         return $eventos;

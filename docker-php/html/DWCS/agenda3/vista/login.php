@@ -24,9 +24,9 @@ function getLogin($mensaje=null,$correo="") {
                     <label for="tipo">Quiero que la aplicacion funcione con: </label>
                     <select name="tipo" id="tipo" required>
                         <option value="" selected disabled>Elige una opcion</option>
-                        <option value="1">Sesiones</option>
-                        <option value="2">Mysql</option>
-                        <option value="3">Mongo</option>
+                        <option value="sesiones">Sesiones</option>
+                        <option value="mysql">Mysql</option>
+                        <option value="mongo">Mongo</option>
                     </select>
                 </div>
                 <input type="submit" value="Entrar"  class="btn btn-primary">

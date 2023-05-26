@@ -14,7 +14,7 @@ if(session_status()===PHP_SESSION_ACTIVE){
 }else{
   session_start();
 }
-$eventos=Eventos::Listar();
+$_SESSION["tipo"]="mysql";
 $secretUser = new Usuario(0,"Luis","luis@test.com",1,Usuario::hashPassword("12345"));
 
 $contenido ="";
@@ -30,6 +30,7 @@ try {
   }
  
   $usuario = Sesiones::getSesiones(); //*/
+  $eventos=Eventos::Listar();
   //Usuario validado
   $accion = null;
   $id_evento = null;
@@ -60,7 +61,7 @@ try {
     if($_POST["fecha_inicio"]==$_POST["fecha_fin"]){
       $fecha_fin=null;
     }
-    Eventos::guardar($id_evento==null? null:$id_evento,1,$nombre_evento,$fecha_inicio!=null? $fecha_inicio: null,$fecha_fin!=null? $fecha_fin:null);
+    Eventos::guardar($id_evento==null? null:$id_evento,0,$nombre_evento,$fecha_inicio!=null? $fecha_inicio: null,$fecha_fin!=null? $fecha_fin:null);
     $accion="listar";
   }
 

@@ -10,7 +10,7 @@ abstract class Evento implements PersistentInterfaceEventos{
                     protected $nombre=null,
                     protected ?DateTime $fecha_inicio=null,
                     protected ?DateTime $fecha_fin=null ){
-        if($this->id_usuario==null){
+        if(is_null($this->id_usuario)){
             throw new Exception("El evento necesita un usuario asignado");
         }
 
