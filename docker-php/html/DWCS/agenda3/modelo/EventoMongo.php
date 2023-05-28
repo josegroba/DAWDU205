@@ -23,7 +23,10 @@ class EventoMongo extends Evento implements MongoDB\BSON\Persistable{
         $cursor->setTypeMap(['root' => EventoMongo::class]);
         $evs = $cursor->toArray(); 
         foreach($evs as $evento){
-            if($evento->getIdUsuario()==$usuario->getId()){
+            if($usuario->getRol()==2){
+                $eventos[(String)$evento->id_evento]=$evento;
+            }
+            else if($evento->getIdUsuario()==$usuario->getId()){
                 $eventos[(String)$evento->id_evento]=$evento;
             }
         }

@@ -19,7 +19,11 @@ class EventoMySql extends Evento {
     static function listar(){
         $usuario=Sesiones::getSesiones();
         $BD = BD::getConexion();
-        $stmt = $BD->prepare("SELECT * FROM evento WHERE id_usuario=:id_usuario");
+        if($usuario->getRol()==2){
+            $stmt = $BD->prepare("SELECT * FROM evento");
+        }else{
+            $stmt = $BD->prepare("SELECT * FROM evento WHERE id_usuario=:id_usuario");
+        }
         $stmt->execute([":id_usuario"=>$usuario->getId()]);
         $eventos=[];
         foreach($stmt->fetchAll() as $evento){

@@ -72,8 +72,9 @@ class Sesiones extends Usuario {
 
     public static function closeSession(){
         if (session_status() === PHP_SESSION_ACTIVE) {
-            session_unset();
-            session_destroy();
+            /*session_unset();
+            session_destroy();*/
+            unset($_SESSION["usuario"]);
         }
     }
 }

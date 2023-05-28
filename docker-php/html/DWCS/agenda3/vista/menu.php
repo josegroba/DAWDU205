@@ -19,8 +19,14 @@ if (Sesiones::isRegistered()) {
         </a>
     <!--  <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
           <a class="dropdown-item" href="?accion=listar&tipo=evento">Listado de Eventos</a>
+          <?php
+            if($usuario->getRol()!=2){
+          ?>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="?accion=nuevo&tipo=evento">Nuevo Evento</a>
+          <?php
+            }
+          ?>
     <!--  </div>  -->
       </li>
       <li class="nav-item dropdown">
@@ -29,7 +35,7 @@ if (Sesiones::isRegistered()) {
         </a>
         <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
           <?php
-            if($usuario->getRol()==1){
+            if($usuario->getRol()==1||$usuario->getRol()==2){
           ?>
           <a class="dropdown-item" href="?accion=listarUsuarios&tipo=usuario">Listado de Usuarios</a>
           <?php

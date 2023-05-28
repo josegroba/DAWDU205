@@ -1,5 +1,7 @@
 <?php 
+require_once(dirname(__FILE__)."/../session/Sesiones.php");
 function ListadoEventos($eventos) {
+    $usuario=Sesiones::getSesiones();
 ob_start();
 ?>
 <h2>Listado de eventos</h2>
@@ -9,6 +11,15 @@ ob_start();
     <th scope="col">Nombre</th>
     <th scope="col">Fecha incio</th>
     <th scope="col">Fecha fin</th>
+    <?php
+        if($usuario->getRol()==2){
+    ?>
+    <th scope="col">IdUsuario</th>
+    <th scope="col">Nombre</th>
+    <th scope="col">Correo</th>
+    <?php
+        }
+    ?>
     <th scope="col">Acciones</th>
 </tr>
 </thead>
@@ -20,6 +31,15 @@ foreach ($eventos as $evento) { ?>
         <td><?=$evento->getNombre()?></td>
         <td><?=$evento->getFechaInicio()->format($formato)?></td>
         <td><?=$evento->getFechaFin()->format($formato)?></td>
+        <?php
+            if($usuario->getRol()==2){
+        ?>
+        <td><?=$usuario->getId()?></td>
+        <td><?=$usuario->getNombre()?></td>
+        <td><?=$usuario->getCorreo()?></td>
+        <?php
+            }
+        ?>
         <td>
         <a href="?accion=modificar&id_evento=<?=$evento->getIdEvento()?>" class="btn btn-primary btn-sm " role="button" aria-pressed="true">Modificar</a>
         <a href="?accion=eliminar&id_evento=<?=$evento->getIdEvento()?>" class="btn btn-danger btn-sm " role="button" aria-pressed="true"

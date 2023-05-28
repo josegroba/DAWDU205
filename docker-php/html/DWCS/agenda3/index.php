@@ -15,16 +15,15 @@ if(session_status()===PHP_SESSION_ACTIVE){
 }else{
   session_start();
 }
-$secretUser = new Usuario(1,"Luis","luis@test.com",1,Usuario::hashPassword("12345"));
+//session_destroy();
+$superAdmin = new Usuario(null,"Luis","luis@test.com",2,Usuario::hashPassword("12345"));
 $usuarios=[];
 $contenido ="";
 try {
   //Validar usuario
   if ($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["correo"])&& isset($_POST["password"])&&isset($_POST["tipo"])) {
     Tipo::createTipo($_POST["tipo"]);
-    Usuarios::guardar(null,"Luis","luis@test.com",1,Usuario::hashPassword("12345"));
     $usuarios=Usuarios::Listar();
-    echo("tipo:".$_POST["tipo"]);
     $usuCorrecto=false;
     foreach ($usuarios as $usuario) {
       if ($usuario->comprobarValidarUsuario($_POST["correo"],$_POST["password"])){
@@ -33,25 +32,30 @@ try {
       }
     }
     if(!$usuCorrecto){
-      throw new Exception("Acceso denegado");
+      if ($superAdmin->comprobarValidarUsuario($_POST["correo"],$_POST["password"])){
+        $usuCorrecto=true;
+        Usuarios::guardar(null,"Luis","luis@test.com",2,Usuario::hashPassword("12345"));
+        Sesiones::createSesiones($superAdmin);
+      }else{
+        throw new Exception("Acceso denegado");
+      }
     }
-/*
-   if (!$secretUser->comprobarValidarUsuario($_POST["correo"],$_POST["password"])) {
-     throw new Exception("Acceso denegado");
-   } else {
-      Sesiones::createSesiones($secretUser);
-      
-   }*/
   }
  
-  $usuario = Sesiones::getSesiones(); //*/
+  $usuarioActual = Sesiones::getSesiones(); //*/
   $eventos=Eventos::Listar();
+  echo($usuarioActual->getRol());
   //Usuario validado
   $accion = null;
   $id_evento = null;
   $nombre_evento=null;
   $fecha_inicio="";
   $fecha_fin="";
+  $id_usuario=null;
+  $nombre_usuario=null;
+  $correo=null;
+  $rol=0;
+  $password=null;
   if ($_SERVER["REQUEST_METHOD"]== "GET" && isset($_GET['accion'])) {
     $accion = $_GET['accion'];
     if (isset($_GET['id_evento'])) {
@@ -76,7 +80,26 @@ try {
     if($_POST["fecha_inicio"]==$_POST["fecha_fin"]){
       $fecha_fin=null;
     }
-    Eventos::guardar($id_evento==null? null:$id_evento,$usuario->getId(),$nombre_evento,$fecha_inicio!=null? $fecha_inicio: null,$fecha_fin!=null? $fecha_fin:null);
+    Eventos::guardar($id_evento==null? null:$id_evento,$usuarioActual->getId(),$nombre_evento,$fecha_inicio!=null? $fecha_inicio: null,$fecha_fin!=null? $fecha_fin:null);
+    $accion="listar";
+  }
+  if ($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["accion"]) && $_POST["accion"]=="guardarUsuario") {
+    if(isset($_POST["id_usuario"])){
+      $id_usuario = $_POST["id_usuario"];
+    }
+    if(isset($_POST["nombre"])){
+      $nombre_usuario = $_POST["nombre"];
+    }
+    if(isset($_POST["correo"])){
+      $correo = $_POST["correo"];
+    }
+    if(isset($_POST["rol"])){
+      $rol = $_POST["rol"];
+    }
+    if(isset($_POST["password"])){
+      $password = Usuario::hashPassword($_POST["password"]);
+    }
+    Usuarios::guardar($id_usuario,$nombre_usuario,$correo,$rol,$password);
     $accion="listar";
   }
 
@@ -96,7 +119,7 @@ try {
       $contenido=getFormEventos();
       break;
     case 'nuevoUsuario':
-      $contenido=getFormUsuarios($usuario->getId());
+      $contenido=getFormUsuarios();
       break;
     case 'listarUsuarios':
       $usuarios=Usuarios::Listar();
@@ -104,7 +127,10 @@ try {
       break;
     case 'modificar':
         $contenido = getFormEventos(Eventos::getById($id_evento));
-        break;      
+        break;
+    case 'modificar':
+      $contenido = getFormUsuarios(Usuarios::getById($id_usuario));
+      break; 
     default:
            $eventos = Eventos::listar();
             $contenido = ListadoEventos($eventos);
