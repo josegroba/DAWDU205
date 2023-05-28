@@ -2,16 +2,16 @@
 
 class BD {
     private static $conexion;
-    /*private function __construct()
-    {
-        
-    }
-*/
+
     public static function getConexion() {
         if (!isset(self::$conexion)) {
-            $dsn = "mysql:dbname=EjercicioEventos;host=docker-mysql";
+            /* ---------clase------------------*/
+            //$dsn = "mysql:dbname=EjercicioEventos;host=docker-mysql";
+            //$password = "root123";
+            /* ---------casa-------------*/
+            $dsn = "mysql:dbname=EjercicioEventos;host=127.0.0.1";
+            $password = "";
             $usuario ="root";
-            $password = "root123";
             self::$conexion = new PDO($dsn, $usuario, $password);
             self::$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }

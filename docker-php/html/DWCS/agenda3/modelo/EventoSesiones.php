@@ -26,7 +26,7 @@ class EventoSesiones extends Evento {
         if(isset($_SESSION["eventos"])){
             foreach ($_SESSION["eventos"] as $evento) {
                 $e = unserialize($evento);
-                if($usuario->getId()==$e->getIdUsuario()){
+                if($usuario->getRol()==1){
                     $eventos[$e->id_evento] = $e;
                 }
             }     

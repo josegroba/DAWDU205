@@ -1,8 +1,9 @@
 <?php 
-//require_once(dirname(__FILE__)."/../session/Sesiones.php");
+require_once(dirname(__FILE__)."/../session/Sesiones.php");
 function getMenu() {
 ob_start();
-//if (Sesiones::isRegistered()) {
+if (Sesiones::isRegistered()) {
+  $usuario= Sesiones::getSesiones();
     ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="index.php">Agenda</a>
@@ -27,7 +28,13 @@ ob_start();
           Usuarios
         </a>
         <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+          <?php
+            if($usuario->getRol()==1){
+          ?>
           <a class="dropdown-item" href="?accion=listarUsuarios&tipo=usuario">Listado de Usuarios</a>
+          <?php
+            }
+          ?>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="?accion=nuevoUsuario&tipo=usuario">Nuevo Usuario</a>
         <!--</div>-->
@@ -37,7 +44,7 @@ ob_start();
   </div>
 </nav>  
 <?php
-//}
+}
 $html = ob_get_contents();
 ob_clean();
 return $html;

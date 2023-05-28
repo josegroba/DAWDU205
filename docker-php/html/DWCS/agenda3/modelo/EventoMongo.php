@@ -1,6 +1,7 @@
 <?php
 require_once(dirname(__FILE__)."/../modelo/Evento.php");
 require_once(dirname(__FILE__)."/../BD/BDMongo.php");
+require_once(dirname(__FILE__)."/../session/Sesiones.php");
 class EventoMongo extends Evento implements MongoDB\BSON\Persistable{
     
     function guardar(){
@@ -15,13 +16,16 @@ class EventoMongo extends Evento implements MongoDB\BSON\Persistable{
     }
 
     static function listar(){
+        $usuario=Sesiones::getSesiones();
         $eventos = [];
         BdMongo::getConexion();
         $cursor = BDMongo::getConexion()->Evento->find();
         $cursor->setTypeMap(['root' => EventoMongo::class]);
         $evs = $cursor->toArray(); 
         foreach($evs as $evento){
-            $eventos[(String)$evento->id_evento]=$evento;
+            if($evento->getIdUsuario()==$usuario->getId()){
+                $eventos[(String)$evento->id_evento]=$evento;
+            }
         }
         return $eventos;
     }

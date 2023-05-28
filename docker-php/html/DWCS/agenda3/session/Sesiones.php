@@ -3,6 +3,33 @@ require_once(dirname(__FILE__)."/../modelo/Usuario.php");
 class LoginException extends Exception {
 
 }
+class Tipo{
+    private static $tipo;
+
+    public static function getTipo() {
+        if (session_status() !== PHP_SESSION_ACTIVE ) session_start(); 
+        if (!isset($_SESSION["tipo"])) {
+            throw new LoginException("Sesión no creada");
+        }
+        self::$tipo=$_SESSION["tipo"];
+        return self::$tipo;
+    }
+    private static function setTipo() {
+        if (isset(self::$tipo)) {
+            if (session_status() !== PHP_SESSION_ACTIVE) {
+                session_start();
+            }
+            $_SESSION["tipo"]= self::$tipo;
+        }
+    }  
+    public static function createTipo($tipo) {
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+        self::$tipo = $tipo;
+        self::setTipo();
+    }
+}
 class Sesiones extends Usuario {
     private static Sesiones $usuario;
 
@@ -19,6 +46,7 @@ class Sesiones extends Usuario {
         self::$usuario = new Sesiones($user["id_usuario"],$user["nombre"],$user["correo"],$user["rol"]);
         return self::$usuario;
     }
+    
     public static function createSesiones($usuario=null) {
         if (isset($usuario)) {
                 if (session_status() !== PHP_SESSION_ACTIVE) {
