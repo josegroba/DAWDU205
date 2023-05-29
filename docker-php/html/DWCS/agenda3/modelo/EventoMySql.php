@@ -21,10 +21,11 @@ class EventoMySql extends Evento {
         $BD = BD::getConexion();
         if($usuario->getRol()==2){
             $stmt = $BD->prepare("SELECT * FROM evento");
+            $stmt->execute();
         }else{
             $stmt = $BD->prepare("SELECT * FROM evento WHERE id_usuario=:id_usuario");
+            $stmt->execute([":id_usuario"=>$usuario->getId()]);
         }
-        $stmt->execute([":id_usuario"=>$usuario->getId()]);
         $eventos=[];
         foreach($stmt->fetchAll() as $evento){
             $id_evento =$evento["id_evento"];

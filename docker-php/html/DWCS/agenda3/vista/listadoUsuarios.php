@@ -1,5 +1,7 @@
 <?php 
+require_once(dirname(__FILE__)."/../session/Sesiones.php");
 function ListadoUsuarios($usuarios) {
+$usuActual=Sesiones::getSesiones();
 ob_start();
 ?>
 <h2>Listado de Usuarios</h2>
@@ -15,14 +17,16 @@ ob_start();
 <tbody>
 <?php
 foreach ($usuarios as $usuario) { ?>
-    <tr>
+    <tr <?php if($usuActual->getId()==$usuario->getId()){ ?> style="background-color: lightcyan;" > <?php } ?>>
         <td><?=$usuario->getNombre()?></td>
         <td><?=$usuario->getCorreo()?></td>
         <td><?=$usuario->getRol()?></td>
         <td>
-            <a href="?accion=modificar&id_evento=<?=$usuario->getId()?>" class="btn btn-primary btn-sm " role="button" aria-pressed="true">Modificar</a>
-            <a href="?accion=eliminar&id_evento=<?=$usuario->getId()?>" class="btn btn-danger btn-sm " role="button" aria-pressed="true"
-            onclick="if (confirm('Estas seguro?')){ return true; } else {return false;}">Eliminar</a> 
+            <a href="?accion=modificarUsuario&id_usuario=<?=$usuario->getId()?>" class="btn btn-primary btn-sm " role="button" aria-pressed="true">Modificar</a>
+            <?php if($usuActual->getId()!=$usuario->getId()){ ?>
+                <a href="?accion=eliminarUsuario&id_usuario=<?=$usuario->getId()?>" class="btn btn-danger btn-sm " role="button" aria-pressed="true"
+                onclick="if (confirm('Estas seguro?')){ return true; } else {return false;}">Eliminar</a> 
+            <?php } ?>
         </td>
     </tr>
 <?php }

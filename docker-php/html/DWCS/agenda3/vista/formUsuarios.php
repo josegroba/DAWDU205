@@ -36,9 +36,9 @@ function getFormUsuarios($usuario=null) {
                     <label for="correo">Correo:</label><br>
                     <input type="email" name="correo" id="correo" required value="<?=$correo?>">
                 </div>
-                <div class="mb-3">    
-                    <label for="password" <?php if(is_null($id)){?>required<?php } ?>>Contraseña:</label><br>
-                    <input type="password" name="password" id="password">
+                <div class="mb-3">
+                    <label for="password">Contraseña:</label><br>
+                    <input type="password" name="password" id="password" <?php if(is_null($usuario)){?>required<?php } ?>>
                 </div>
                 <?php
                     if($rolActual==1||$rolActual==2){

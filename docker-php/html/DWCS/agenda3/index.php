@@ -41,7 +41,6 @@ try {
       }
     }
   }
- 
   $usuarioActual = Sesiones::getSesiones(); //*/
   $eventos=Eventos::Listar();
   echo($usuarioActual->getRol());
@@ -60,6 +59,9 @@ try {
     $accion = $_GET['accion'];
     if (isset($_GET['id_evento'])) {
       $id_evento = $_GET['id_evento'];
+    }
+    if (isset($_GET['id_usuario'])) {
+      $id_usuario = $_GET['id_usuario'];
     }
     
   }
@@ -100,7 +102,7 @@ try {
       $password = Usuario::hashPassword($_POST["password"]);
     }
     Usuarios::guardar($id_usuario,$nombre_usuario,$correo,$rol,$password);
-    $accion="listar";
+    $accion="listarUsuarios";
   }
 
   switch ($accion) {
@@ -121,6 +123,9 @@ try {
     case 'nuevoUsuario':
       $contenido=getFormUsuarios();
       break;
+    case 'eliminarUsuario': 
+      Usuarios::Eliminar($id_usuario);
+      $accion = "listarUsuarios";
     case 'listarUsuarios':
       $usuarios=Usuarios::Listar();
       $contenido=ListadoUsuarios($usuarios);
@@ -128,7 +133,7 @@ try {
     case 'modificar':
         $contenido = getFormEventos(Eventos::getById($id_evento));
         break;
-    case 'modificar':
+    case 'modificarUsuario':
       $contenido = getFormUsuarios(Usuarios::getById($id_usuario));
       break; 
     default:

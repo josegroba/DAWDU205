@@ -1,5 +1,6 @@
 <?php 
 require_once(dirname(__FILE__)."/../session/Sesiones.php");
+require_once(dirname(__FILE__)."/../controller/Usuarios.php");
 function ListadoEventos($eventos) {
     $usuario=Sesiones::getSesiones();
 ob_start();
@@ -33,10 +34,11 @@ foreach ($eventos as $evento) { ?>
         <td><?=$evento->getFechaFin()->format($formato)?></td>
         <?php
             if($usuario->getRol()==2){
+                $usuEvento=Usuarios::getById($evento->getIdUsuario());
         ?>
-        <td><?=$usuario->getId()?></td>
-        <td><?=$usuario->getNombre()?></td>
-        <td><?=$usuario->getCorreo()?></td>
+        <td><?=$usuEvento->getId()?></td>
+        <td><?=$usuEvento->getNombre()?></td>
+        <td><?=$usuEvento->getCorreo()?></td>
         <?php
             }
         ?>
