@@ -27,7 +27,9 @@ function getFormUsuarios($usuario=null) {
         ?>
         <div class="card-body">
             <form action="" method="post"  class="mb-3">
+                <?php if(!is_null($id)){ ?>
                 <input type="hidden" name="id_usuario" value="<?=$id?>">
+                <?php } ?>
                 <div class="mb-3">
                     <label for="nombre">Nombre:</label>
                     <input type="text" name="nombre" id="nombre" required value="<?=$nombre?>">

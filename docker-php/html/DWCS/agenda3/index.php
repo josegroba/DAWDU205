@@ -43,7 +43,6 @@ try {
   }
   $usuarioActual = Sesiones::getSesiones(); //*/
   $eventos=Eventos::Listar();
-  echo($usuarioActual->getRol());
   //Usuario validado
   $accion = null;
   $id_evento = null;
@@ -86,22 +85,28 @@ try {
     $accion="listar";
   }
   if ($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["accion"]) && $_POST["accion"]=="guardarUsuario") {
+    $id_Nusuario=null;
+    $nombre_Nusuario=null;
+    $Ncorreo=null;
+    $Nrol=0;
+    $Npassword=null;
     if(isset($_POST["id_usuario"])){
-      $id_usuario = $_POST["id_usuario"];
+      $id_Nusuario = $_POST["id_usuario"];
     }
     if(isset($_POST["nombre"])){
-      $nombre_usuario = $_POST["nombre"];
+      $nombre_Nusuario = $_POST["nombre"];
     }
     if(isset($_POST["correo"])){
-      $correo = $_POST["correo"];
+      $Ncorreo = $_POST["correo"];
     }
     if(isset($_POST["rol"])){
-      $rol = $_POST["rol"];
+      $Nrol = $_POST["rol"];
     }
     if(isset($_POST["password"])){
-      $password = Usuario::hashPassword($_POST["password"]);
+      $Npassword = Usuario::hashPassword($_POST["password"]);
     }
-    Usuarios::guardar($id_usuario,$nombre_usuario,$correo,$rol,$password);
+    //Usuarios::guardar(null,"Luis","luis@test.com",2,Usuario::hashPassword("12345"));
+    Usuarios::guardar($id_Nusuario,$nombre_Nusuario,$Ncorreo,$Nrol,$Npassword);
     $accion="listarUsuarios";
   }
 

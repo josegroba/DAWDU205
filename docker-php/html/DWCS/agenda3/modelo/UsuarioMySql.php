@@ -13,8 +13,7 @@ class UsuarioMysql extends Usuario {
                         ":correo" => $this->getCorreo(),
                         ":rol" => $this->getRol(),
                         ":password" => $this->getPassword()
-                        ]);   
-                        echo"Usuario Guardado correctamente!!!!!";
+                        ]);
     }
 
     static function listar(){
@@ -36,7 +35,6 @@ class UsuarioMysql extends Usuario {
             $password=$evento["password"];
             $usuarios[$evento["id"]]=new UsuarioMysql($id,$nombre,$correo,$rol,$password);
         }
-        echo"usuarios listados correctamente!!!";
         return $usuarios;
     }
     static function eliminar($id){

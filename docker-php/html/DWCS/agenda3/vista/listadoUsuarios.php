@@ -7,7 +7,7 @@ ob_start();
 <h2>Listado de Usuarios</h2>
 <table class="table  table-bordered">
 <thead class="thead-dark">
-<tr >
+<tr>
     <th scope="col">Nombre</th>
     <th scope="col">Correo</th>
     <th scope="col">Rol</th>
@@ -17,7 +17,7 @@ ob_start();
 <tbody>
 <?php
 foreach ($usuarios as $usuario) { ?>
-    <tr <?php if($usuActual->getId()==$usuario->getId()){ ?> style="background-color: lightcyan;" > <?php } ?>>
+    <tr <?php if($usuActual->getId()==$usuario->getId()){ ?> style="background-color: lightcyan;"  <?php } ?>>
         <td><?=$usuario->getNombre()?></td>
         <td><?=$usuario->getCorreo()?></td>
         <td><?=$usuario->getRol()?></td>
@@ -30,6 +30,7 @@ foreach ($usuarios as $usuario) { ?>
         </td>
     </tr>
 <?php }
+
 ?>
 <tbody>
 </table>

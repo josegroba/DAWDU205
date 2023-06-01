@@ -12,42 +12,25 @@ if (Sesiones::isRegistered()) {
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Eventos
-        </a>
-    <!--  <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
-          <a class="dropdown-item" href="?accion=listar&tipo=evento">Listado de Eventos</a>
-          <?php
-            if($usuario->getRol()!=2){
-          ?>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="?accion=nuevo&tipo=evento">Nuevo Evento</a>
-          <?php
-            }
-          ?>
-    <!--  </div>  -->
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Usuarios
-        </a>
-        <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-          <?php
-            if($usuario->getRol()==1||$usuario->getRol()==2){
-          ?>
-          <a class="dropdown-item" href="?accion=listarUsuarios&tipo=usuario">Listado de Usuarios</a>
-          <?php
-            }
-          ?>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="?accion=nuevoUsuario&tipo=usuario">Nuevo Usuario</a>
-        <!--</div>-->
-      </li>
-        <li><a class="nav-link" href="?accion=cerrar">Cerrar Sesión</a></li>
-    </ul>
-  </div>
+    <div class="dropdown">
+      <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Eventos
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="?accion=listar">Listado de Eventos</a></li>
+        <li><a class="dropdown-item" href="?accion=nuevo">Nuevo Evento</a></li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Usuarios
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="?accion=listarUsuarios">Listado de Usuarios</a></li>
+        <li><a class="dropdown-item" href="?accion=nuevoUsuario">Nuevo Usuario</a></li>
+      </ul>
+	  </div>
+    <a class="nav-link" href="?accion=cerrar">Cerrar Sesión</a>
 </nav>  
 <?php
 }
